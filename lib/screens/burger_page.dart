@@ -1,10 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/utils/body_desc.dart';
-import 'package:flutter_cep/utils/header_desc.dart';
-
-import '../utils/header_home.dart';
+import '../utils/body_desc.dart';
+import '../utils/header_desc.dart';
 
 class BurgerPage extends StatefulWidget {
   static const tag = 'burger_page';

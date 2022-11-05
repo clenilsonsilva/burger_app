@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class HeaderDesc extends StatefulWidget {
+class HeaderDesc extends StatelessWidget {
   const HeaderDesc({super.key});
 
-  @override
-  State<HeaderDesc> createState() => _HeaderDescState();
-}
-
-class _HeaderDescState extends State<HeaderDesc> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

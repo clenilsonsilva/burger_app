@@ -1,13 +1,10 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 
-class HeaderHome extends StatefulWidget {
+class HeaderHome extends StatelessWidget {
   const HeaderHome({super.key});
 
-  @override
-  State<HeaderHome> createState() => _HeaderHomeState();
-}
-
-class _HeaderHomeState extends State<HeaderHome> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

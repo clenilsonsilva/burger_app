@@ -18,7 +18,7 @@ class App extends StatelessWidget {
           centerTitle: true,
         ),
         cardColor: Colors.white,
-        bottomAppBarColor: Colors.teal,
+        bottomAppBarColor: Colors.white,
         floatingActionButtonTheme:
             const FloatingActionButtonThemeData(backgroundColor: Colors.orange),
       ),

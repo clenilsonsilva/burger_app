@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class BodyDesc extends StatefulWidget {
+class BodyDesc extends StatelessWidget {
   const BodyDesc({super.key});
 
-  @override
-  State<BodyDesc> createState() => _BodyDescState();
-}
-
-class _BodyDescState extends State<BodyDesc> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -16,7 +11,7 @@ class _BodyDescState extends State<BodyDesc> {
         children: [
           Column(
             children: [
-              Container(
+              SizedBox(
                 height: size.height / 4.5,
                 //  color: Colors.green.withOpacity(0.4),
                 child: Padding(

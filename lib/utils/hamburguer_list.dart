@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/burger_page.dart';
 
-class HamburgueList extends StatefulWidget {
+
+class HamburgueList extends StatelessWidget {
   final int row;
   const HamburgueList({super.key, required this.row});
 
   @override
-  State<HamburgueList> createState() => _HamburgueList();
-}
-
-class _HamburgueList extends State<HamburgueList> {
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int items = 2;
-    Widget baconImage = Container(
+    Widget baconImage = SizedBox(
       height: 170,
       width: 170,
       child: Image.asset("images/bacon-j.png"),
     );
 
-    Widget chickenImage = Container(
+    Widget chickenImage = SizedBox(
       height: 170,
       width: 170,
       child: Image.asset("images/burguer_c.png"),
@@ -34,7 +29,7 @@ class _HamburgueList extends State<HamburgueList> {
           scrollDirection: Axis.horizontal,
           itemCount: items,
           itemBuilder: (context, index) {
-            bool reverse = widget.row == 2 ? index.isEven : index.isOdd;
+            bool reverse = row == 2 ? index.isEven : index.isOdd;
             return Stack(
               children: [
                 Container(
@@ -77,7 +72,7 @@ class _HamburgueList extends State<HamburgueList> {
                                   ),
                                 ),
                                 const Spacer(),
-                                Container(
+                                SizedBox(
                                   width: 50,
                                   height: 50,
                                   child: Card(

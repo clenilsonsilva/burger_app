@@ -1,12 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-
 import '../utils/header_home.dart';
 import '../utils/categories.dart';
 import '../utils/hamburguer_list.dart';
 import '../widgets/DrawerWidget.dart';
-import 'shippin_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         title: const Text('Hamburgueria'),
         actions: [
@@ -34,9 +30,9 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: CustomScrollView(
+      body: const CustomScrollView(
         scrollDirection: Axis.vertical,
-        slivers: const [
+        slivers: [
           HeaderHome(),
           Categories(),
           HamburgueList(
@@ -53,39 +49,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      // drawer: DrawerWidget(),
-      // extendBody: true,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   child: const Icon(Icons.home),
-      // ),
-      // bottomNavigationBar: ClipRRect(
-      //   borderRadius: const BorderRadius.vertical(
-      //     top: Radius.circular(45),
-      //   ),
-      //   child: BottomAppBar(
-      //     shape: const CircularNotchedRectangle(),
-      //     child: Row(
-      //       children: [
-      //         const Spacer(),
-      //         IconButton(
-      //           onPressed: (() {}),
-      //           icon: const Icon(Icons.add_alert),
-      //           color: Colors.white,
-      //         ),
-      //         const Spacer(),
-      //         const Spacer(),
-      //         IconButton(
-      //           onPressed: (() {}),
-      //           icon: const Icon(Icons.turned_in),
-      //           color: Colors.white,
-      //         ),
-      //         const Spacer(),
-      //       ],
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
