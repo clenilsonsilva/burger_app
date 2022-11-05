@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ShippingPage extends StatefulWidget {
-  static const tag = 'burger_page';
+  static const tag = 'shipping_page';
   const ShippingPage({super.key});
 
   @override

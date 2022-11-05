@@ -30,7 +30,9 @@ class _BurgerPageState extends State<BurgerPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed('shipping_page');
+            },
             icon: const Icon(Icons.shopping_cart),
           ),
         ],

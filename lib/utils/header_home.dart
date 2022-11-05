@@ -18,7 +18,8 @@ class _HeaderHomeState extends State<HeaderHome> {
             Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 50),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 50),
                   height: size.height / 3.5,
                   decoration: const BoxDecoration(
                       color: Colors.teal,
@@ -28,45 +29,7 @@ class _HeaderHomeState extends State<HeaderHome> {
                       boxShadow: [
                         BoxShadow(blurRadius: 2),
                       ]),
-                  child: Column(children: [
-                    const SizedBox(height: 40),
-                    Row(
-                      children: [
-                        const CircleAvatar(
-                          backgroundColor: Colors.white70,
-                          radius: 35,
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage(
-                                "images/inscricoes-vestibular-ifpa-2021-1-semestre.jpg"),
-                            radius: 30,
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        Column(
-                          children: [
-                            const Text(
-                              'IFPA TADS',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.black54),
-                              child: const Text(
-                                'GOLD Member',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
-                  ]),
+                  child: Column(children: [Row()]),
                 ),
                 const SizedBox(height: 20),
               ],

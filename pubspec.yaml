@@ -65,7 +65,7 @@ flutter:
     - images/bacon-j.png
     - images/burguer_c.png
     - images/chickenj.png
-    - images/inscricoes-vestibular-ifpa-2021-1-semestre.jpg
+    - images/ifpa.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

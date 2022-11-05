@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/shippin_page.dart';
 
 import '../utils/header_home.dart';
 import '../utils/categories.dart';
 import '../utils/hamburguer_list.dart';
+import '../widgets/DrawerWidget.dart';
+import 'shippin_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,22 +20,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      drawer: DrawerWidget(),
       appBar: AppBar(
         title: const Text('Hamburgueria'),
-        leading: IconButton(
-              // color: Colors.white,
-              icon: const Icon(Icons.menu),
-              onPressed: (() {}),
-            ),
         actions: [
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ShippingPage()),
-                  );
+                  Navigator.of(context).pushNamed('shipping_page');
                 },
               )
             ],
@@ -60,6 +53,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      // drawer: DrawerWidget(),
       // extendBody: true,
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       // floatingActionButton: FloatingActionButton(
