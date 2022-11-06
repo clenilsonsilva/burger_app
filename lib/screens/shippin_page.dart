@@ -13,19 +13,19 @@ class ShippingPage extends StatefulWidget {
 class ShippingPageState extends State<ShippingPage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_cart),
+        leading: IconButton(
+            icon: const Icon(Icons.arrow_back_rounded,
+            color: Colors.black,),
             onPressed: () {
-              Navigator.of(context).pushNamed('shipping_page');
+              Navigator.of(context).pushNamed('home_page');
             },
-          )
-        ],
-        backgroundColor: Colors.teal,
-        elevation: 0,
+          ),
+          backgroundColor: Colors.teal
       ),
+      backgroundColor: Colors.white.withOpacity(0.9),
       body: ListView(
         children: [
           SingleChildScrollView(

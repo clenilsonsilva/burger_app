@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/body_desc.dart';
 import '../utils/header_desc.dart';
+import '../widgets/burgerbottonnavbar.dart';
 
 class BurgerPage extends StatefulWidget {
   static const tag = 'burger_page';
@@ -42,6 +43,7 @@ class _BurgerPageState extends State<BurgerPage> {
           BodyDesc(),
         ],
       ),
+      bottomNavigationBar: const BurgerBottonNavBar(),
     );
   }
 }

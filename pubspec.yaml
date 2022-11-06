@@ -29,8 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.5
-  brasil_fields: ^1.4.5
+  clippy_flutter: ^2.0.0-nullsafety.1
+  flutter_rating_bar: ^4.0.1
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -17,11 +17,12 @@ class ListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Container(
         width: 380,
-        height: 100,
+        height: 120,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -34,6 +35,7 @@ class ListCard extends StatelessWidget {
               ),
             ]),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               alignment: Alignment.center,
@@ -44,7 +46,6 @@ class ListCard extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 190,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,14 +90,14 @@ class ListCard extends StatelessWidget {
                       color: Colors.white,
                     ),
                     Text(
-                      '2',
+                      '1',
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
                     Icon(
-                      CupertinoIcons.minus,
+                      CupertinoIcons.plus,
                       color: Colors.white,
                     ),
                   ],

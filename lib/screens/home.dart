@@ -5,6 +5,7 @@ import '../utils/hamburguer_list.dart';
 import '../widgets/DrawerWidget.dart';
 
 class HomePage extends StatefulWidget {
+  static const tag = 'home_page';
   const HomePage({super.key});
 
   @override
