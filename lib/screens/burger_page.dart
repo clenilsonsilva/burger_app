@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../utils/body_desc.dart';
-import '../utils/header_desc.dart';
+import 'package:flutter_cep/header/header.dart';
+import '../body/body_desc.dart';
 import '../widgets/burgerbottonnavbar.dart';
+import '../widgets/shop_icon_appbar.dart';
 
 class BurgerPage extends StatefulWidget {
   static const tag = 'burger_page';
@@ -25,22 +26,15 @@ class _BurgerPageState extends State<BurgerPage> {
             Navigator.pop(context);
           },
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('shipping_page');
-            },
-            icon: const Icon(Icons.shopping_cart),
-          ),
-        ],
+        actions: const [ShopIconAppBar()],
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: const CustomScrollView(
+      body: CustomScrollView(
         scrollDirection: Axis.vertical,
         slivers: [
-          HeaderDesc(),
-          BodyDesc(),
+          HeaderTeste(a: 'burger',),
+          const BodyDesc(),
         ],
       ),
       bottomNavigationBar: const BurgerBottonNavBar(),

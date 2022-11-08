@@ -29,7 +29,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  clippy_flutter: ^2.0.0-nullsafety.1
   flutter_rating_bar: ^4.0.1
 
 
@@ -64,8 +63,9 @@ flutter:
   assets:
     - images/bacon-j.png
     - images/burguer_c.png
-    - images/chickenj.png
     - images/ifpa.jpg
+    - images/cheese.png
+    - images/veggie.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -11,7 +11,7 @@ class _CategoriesState extends State<Categories> {
   int currentSelectedItem = 0;
   @override
   Widget build(BuildContext context) {
-    int items = 10;
+    int items = 4;
     return SliverToBoxAdapter(
       child: Container(
         height: 100,

@@ -13,12 +13,11 @@ class ShippingPage extends StatefulWidget {
 class ShippingPageState extends State<ShippingPage> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            icon: const Icon(Icons.arrow_back_rounded,
-            color: Colors.black,),
+            icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
               Navigator.of(context).pushNamed('home_page');
             },

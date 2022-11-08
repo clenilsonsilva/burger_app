@@ -13,8 +13,6 @@ class HeaderHome extends StatelessWidget {
             Column(
               children: [
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 50),
                   height: size.height / 3.5,
                   decoration: const BoxDecoration(
                       color: Colors.teal,

@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
 
-
 class HamburgueList extends StatelessWidget {
+  final String images_0, images_1, nome_0, nome_1, valor_0, valor_1;
   final int row;
-  const HamburgueList({super.key, required this.row});
+  final double  height_0, width_0, height_1, width_1;
+  const HamburgueList({
+    super.key,
+    required this.images_0,
+    required this.images_1,
+    required this.nome_0,
+    required this.nome_1,
+    required this.valor_0,
+    required this.valor_1,
+    required this.row,
+    required this.height_0,
+    required this.width_0,
+    required this.height_1,
+    required this.width_1,
+  });
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int items = 2;
     Widget baconImage = SizedBox(
-      height: 170,
-      width: 170,
-      child: Image.asset("images/bacon-j.png"),
+      height: height_0,
+      width: width_0,
+      child: Image.asset(images_0),
     );
 
     Widget chickenImage = SizedBox(
-      height: 170,
-      width: 170,
-      child: Image.asset("images/burguer_c.png"),
+      height: height_1,
+      width: width_1,
+      child: Image.asset(images_1),
     );
 
     return SliverToBoxAdapter(
@@ -33,10 +47,9 @@ class HamburgueList extends StatelessWidget {
             return Stack(
               children: [
                 Container(
-                  height: size.width/1.7,
-                  width: size.width/2.05,
-                  margin:
-                      const EdgeInsets.only(left: 7, right: 0),
+                  height: size.width / 1.7,
+                  width: size.width / 2.05,
+                  margin: const EdgeInsets.only(left: 7, right: 0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed('burger_page');
@@ -56,17 +69,17 @@ class HamburgueList extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 15),
                         child: Column(
                           children: [
-                             Text(
-                              reverse ?'Bacon Burger' : 'Chicken Burger',
+                            Text(
+                              reverse ? nome_0 : nome_1,
                               style: const TextStyle(color: Colors.white),
                             ),
                             const Spacer(),
                             Row(
                               children: [
                                 const Spacer(),
-                                const Text(
-                                  '10,00 \$ CAN',
-                                  style: TextStyle(
+                                Text(
+                                  reverse ? 'R\$ $valor_0,00' : 'R\$ $valor_1,00',
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),

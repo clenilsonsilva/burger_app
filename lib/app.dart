@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cep/screens/burger_page.dart';
 import 'package:flutter_cep/screens/shippin_page.dart';
 
-import 'screens/home.dart';
+import 'screens/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
