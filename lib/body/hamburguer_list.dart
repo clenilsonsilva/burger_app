@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/screens/burger_page.dart';
 
 class HamburgueList extends StatelessWidget {
-  final String images_0, images_1, nome_0, nome_1, valor_0, valor_1;
-  final int row;
-  final double  height_0, width_0, height_1, width_1;
+  final String images_0, images_1, nome_0, nome_1, desc_0, desc_1;
+  final int row, minutes_0, minutes_1;
+  final num valor_0, valor_1;
+  final double height_0, width_0, height_1, width_1, rating_0, rating_1;
   const HamburgueList({
     super.key,
     required this.images_0,
@@ -17,6 +19,12 @@ class HamburgueList extends StatelessWidget {
     required this.width_0,
     required this.height_1,
     required this.width_1,
+    required this.desc_0,
+    required this.desc_1,
+    required this.rating_0,
+    required this.rating_1,
+    required this.minutes_0,
+    required this.minutes_1,
   });
 
   @override
@@ -52,7 +60,18 @@ class HamburgueList extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 7, right: 0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pushNamed('burger_page');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BurgerPage(
+                                  nome: reverse ? nome_0 : nome_1,
+                                  desc: reverse ? desc_0 : desc_1,
+                                  rating: reverse ? rating_0 : rating_1,
+                                  minutes: reverse ? minutes_0 : minutes_1,
+                                  valor: reverse ? valor_0 : valor_1,
+                                  image: reverse ? images_0 : images_1,
+                                )),
+                      );
                     },
                     child: Card(
                       elevation: 3,
@@ -78,7 +97,9 @@ class HamburgueList extends StatelessWidget {
                               children: [
                                 const Spacer(),
                                 Text(
-                                  reverse ? 'R\$ $valor_0,00' : 'R\$ $valor_1,00',
+                                  reverse
+                                      ? 'R\$ $valor_0,00'
+                                      : 'R\$ $valor_1,00',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -108,7 +129,18 @@ class HamburgueList extends StatelessWidget {
                   left: reverse ? -10 : -5,
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pushNamed('burger_page');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BurgerPage(
+                                  nome: reverse ? nome_0 : nome_1,
+                                  desc: reverse ? desc_0 : desc_1,
+                                  rating: reverse ? rating_0 : rating_1,
+                                  minutes: reverse ? minutes_0 : minutes_1,
+                                  valor: reverse ? valor_0 : valor_1,
+                                  image: reverse ? images_0 : images_1,
+                                )),
+                      );
                     },
                     child: reverse ? baconImage : chickenImage,
                   ),

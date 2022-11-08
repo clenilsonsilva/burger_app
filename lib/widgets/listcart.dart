@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class ListCard extends StatelessWidget {
   final String image, nome, descricao, valor;
-  final double altura, largura;
 
   const ListCard({
     super.key,
@@ -11,8 +10,6 @@ class ListCard extends StatelessWidget {
     required this.nome,
     required this.descricao,
     required this.valor,
-    required this.altura,
-    required this.largura,
   });
 
   @override
@@ -41,8 +38,8 @@ class ListCard extends StatelessWidget {
               alignment: Alignment.center,
               child: Image.asset(
                 image,
-                height: altura,
-                width: largura,
+                height: size.height/3,
+                width: size.width/2.5,
               ),
             ),
             SizedBox(

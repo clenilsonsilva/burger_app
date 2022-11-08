@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HeaderTeste extends StatelessWidget {
-  final String a;
+  final String a, imagem;
   final valor = ValueNotifier<String>('');
-  HeaderTeste({super.key, required this.a});
+  HeaderTeste({super.key, required this.a, required this.imagem});
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,10 @@ class HeaderTeste extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     height: size.height / 3,
-                                    padding: const EdgeInsets.only(top: 25),
                                     width: size.width,
-                                    child: Image.asset("images/burguer_c.png"),
+                                    child: Image.asset(imagem),
                                   )
                                 ],
                               ),

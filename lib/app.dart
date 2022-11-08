@@ -24,7 +24,6 @@ class App extends StatelessWidget {
       ),
       home: const HomePage(),
       routes: {
-        BurgerPage.tag: (_) => const BurgerPage(),
         ShippingPage.tag: (_) => const ShippingPage(),
         HomePage.tag: (_) => const HomePage(),
 

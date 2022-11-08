@@ -3,7 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class BodyDesc extends StatelessWidget {
-  const BodyDesc({super.key});
+  final String nome, desc;
+  final double rating;
+  final int minutes, counter;
+  final num valor;
+  const BodyDesc(
+      {super.key,
+      required this.valor,
+      required this.nome,
+      required this.desc,
+      required this.rating,
+      required this.minutes,
+      required this.counter});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +41,7 @@ class BodyDesc extends StatelessWidget {
                           children: [
                             RatingBar(
                               itemSize: 20,
-                              initialRating: 4.5,
+                              initialRating: rating,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               itemCount: 5,
@@ -49,9 +60,9 @@ class BodyDesc extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 4.0),
                               onRatingUpdate: (rating) {},
                             ),
-                            const Text(
-                              'R\$ 15,00',
-                              style: TextStyle(
+                            Text(
+                              'R\$ $valor,00',
+                              style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -67,9 +78,9 @@ class BodyDesc extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              'Bacon Burger',
-                              style: TextStyle(
+                            Text(
+                              nome,
+                              style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -84,21 +95,21 @@ class BodyDesc extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
-                                  Icon(
+                                children: [
+                                  const Icon(
                                     CupertinoIcons.minus,
                                     color: Colors.white,
                                     size: 20,
                                   ),
                                   Text(
-                                    '1',
-                                    style: TextStyle(
+                                    '$counter',
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Icon(
+                                  const Icon(
                                     CupertinoIcons.plus,
                                     color: Colors.white,
                                     size: 20,
@@ -109,11 +120,11 @@ class BodyDesc extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
-                          'Pao de brioche, Blende de carne 100g, Calabresa, Salsicha, Ovo, Bacon, Presunto, Queijo, Salada, Barbecue, e Molho especial.',
-                          style: TextStyle(
+                          desc,
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
                           ),
@@ -134,18 +145,17 @@ class BodyDesc extends StatelessWidget {
                               textAlign: TextAlign.justify,
                             ),
                             Row(
-                              children: const[
-                                Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 5),
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
                                   child: Icon(
                                     CupertinoIcons.clock,
                                     color: Colors.red,
                                   ),
                                 ),
                                 Text(
-                                  '30 Minutes',
-                                  style: TextStyle(
+                                  '$minutes Minutes',
+                                  style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.italic,

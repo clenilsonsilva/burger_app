@@ -13,7 +13,7 @@ class ShippingPage extends StatefulWidget {
 class ShippingPageState extends State<ShippingPage> {
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -46,20 +46,16 @@ class ShippingPageState extends State<ShippingPage> {
                     ),
                   ),
                   const ListCard(
-                    image: 'images/bacon-j.png',
+                    image: 'images/bacon.png',
                     nome: 'Bacon Burger',
                     descricao: 'Taste Our Bacon Burger',
                     valor: 'R\$15',
-                    altura: 100,
-                    largura: 150,
                   ),
                   const ListCard(
-                    image: 'images/burguer_c.png',
+                    image: 'images/chicken.png',
                     nome: 'Chicken Burger',
                     descricao: 'Taste Our Chicken Burger',
                     valor: 'R\$15',
-                    altura: 70,
-                    largura: 150,
                   ),
                   Container(
                     height: 50,
