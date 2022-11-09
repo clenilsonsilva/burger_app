@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/screens/shippin_page.dart';
 
 class ShopIconAppBar extends StatelessWidget {
   const ShopIconAppBar({super.key});
@@ -8,7 +9,10 @@ class ShopIconAppBar extends StatelessWidget {
     return IconButton(
       icon: const Icon(Icons.shopping_cart),
       onPressed: () {
-        Navigator.of(context).pushNamed('shipping_page');
+        Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const ShippingPage(image: 'images/bacon.png',)),
+  );
       },
     );
   }

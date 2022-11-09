@@ -1,24 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/class/counter.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class BodyDesc extends StatelessWidget {
   final String nome, desc;
   final double rating;
-  final int minutes, counter;
+  final int minutes;
   final num valor;
-  const BodyDesc(
+  final counter = ValueNotifier<int>(1);
+  BodyDesc(
       {super.key,
       required this.valor,
       required this.nome,
       required this.desc,
       required this.rating,
-      required this.minutes,
-      required this.counter});
+      required this.minutes});
 
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return SliverToBoxAdapter(
       child: Stack(
         children: [
@@ -40,7 +41,7 @@ class BodyDesc extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             RatingBar(
-                              itemSize: 20,
+                              itemSize: size.width / 20,
                               initialRating: rating,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
@@ -62,8 +63,8 @@ class BodyDesc extends StatelessWidget {
                             ),
                             Text(
                               'R\$ $valor,00',
-                              style: const TextStyle(
-                                fontSize: 22,
+                              style: TextStyle(
+                                fontSize: size.width / 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -73,59 +74,73 @@ class BodyDesc extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(
                           top: 10,
-                          bottom: 20,
+                          bottom: 10,
+                          left: 0,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               nome,
-                              style: const TextStyle(
-                                fontSize: 26,
+                              style: TextStyle(
+                                fontSize: size.width / 17,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Container(
-                              width: 90,
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Icon(
-                                    CupertinoIcons.minus,
-                                    color: Colors.white,
-                                    size: 20,
-                                  ),
-                                  Text(
-                                    '$counter',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Icon(
-                                    CupertinoIcons.plus,
-                                    color: Colors.white,
-                                    size: 20,
-                                  ),
-                                ],
-                              ),
-                            ),
+                            ValueListenableBuilder(
+                                valueListenable: counter,
+                                builder: (context, value, child) {
+                                  return Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(
+                                          CupertinoIcons.minus_circle,
+                                          color: counter.value == 1 ? Colors.teal.withOpacity(0.3) : Colors.teal,
+                                          size: size.width / 15,
+                                        ),
+                                        onPressed: counter.value == 1
+                                            ? null
+                                            : () {
+                                                counter.value =
+                                                    counterminus(counter.value);
+                                              },
+                                      ),
+                                      Text(
+                                        '${counter.value}',
+                                        style: TextStyle(
+                                          fontSize: size.width / 17,
+                                          color: Colors.teal,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          CupertinoIcons.plus_circle,
+                                          color: counter.value == 10 ? Colors.teal.withOpacity(0.3) : Colors.teal,
+                                          size: size.width / 15,
+                                        ),
+                                        onPressed: counter.value == 10
+                                            ? null
+                                            : () {
+                                                counter.value =
+                                                    counterplus(counter.value);
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                }),
                           ],
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
+                          textAlign: TextAlign.justify,
                           desc,
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: TextStyle(
+                            fontSize: size.width / 20,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -135,10 +150,10 @@ class BodyDesc extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Delivery time:',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: size.width / 23,
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle.italic,
                               ),
@@ -155,8 +170,8 @@ class BodyDesc extends StatelessWidget {
                                 ),
                                 Text(
                                   '$minutes Minutes',
-                                  style: const TextStyle(
-                                    fontSize: 16,
+                                  style: TextStyle(
+                                    fontSize: size.width / 23,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.italic,
                                   ),
@@ -171,14 +186,6 @@ class BodyDesc extends StatelessWidget {
                   ),
                 ),
               ),
-              // Container(
-              //   height: size.height / 4.5,
-              //   color: Colors.blue.withOpacity(0.4),
-              // ),
-              // Container(
-              //   height: size.height / 4.5,
-              //   color: Colors.red.withOpacity(0.4),
-              // ),
             ],
           ),
         ],

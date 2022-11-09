@@ -49,8 +49,7 @@ class BurgerPage extends StatelessWidget {
               nome: nome,
               desc: desc,
               rating: rating,
-              minutes: minutes,
-              counter: counter)
+              minutes: minutes)
         ],
       ),
       bottomNavigationBar: const BurgerBottonNavBar(),

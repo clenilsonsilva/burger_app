@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/screens/shippin_page.dart';
 
 class ListCard extends StatelessWidget {
   final String image, nome, descricao, valor;
+  
 
   const ListCard({
     super.key,
