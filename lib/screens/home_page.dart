@@ -6,15 +6,10 @@ import '../body/hamburguer_list.dart';
 import '../widgets/DrawerWidget.dart';
 import '../widgets/shop_icon_appbar.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static const tag = 'home_page';
   const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

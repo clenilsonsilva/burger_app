@@ -11,7 +11,7 @@ class ShippingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List items = [];
+    List items = [1, 2];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -23,161 +23,142 @@ class ShippingPage extends StatelessWidget {
           ),
           backgroundColor: Colors.teal),
       backgroundColor: Colors.white.withOpacity(0.9),
-      body: ListView(
-        children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      top: 20,
-                      left: 10,
-                      bottom: 10,
-                    ),
-                    child: Text(
-                      'Order List',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
+      body: CustomScrollView(
+        scrollDirection: Axis.vertical,
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20,
+                    left: 10,
+                    bottom: 10,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      width: size.width,
-                      height: size.height / 6,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 3,
-                              blurRadius: 10,
-                              offset: const Offset(0, 3),
-                            ),
-                          ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SizedBox(
-                            child: Image.asset(
-                              image,
-                              height: size.height / 3,
-                              width: size.width / 2.5,
-                            ),
-                          ),
-                          SizedBox(
-                            child: ValueListenableBuilder(
-                              valueListenable: valuen,
-                              builder: (context, value, child) => Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    'Bacon Burger',
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(
-                                      fontSize: size.width / 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Row(
+                  child: Text(
+                    'Order List',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: size.height/3,
+              width: size.width,
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          width: size.width,
+                          height: size.height / 6,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 3,
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ]),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(
+                                child: Image.asset(
+                                  image,
+                                  height: size.height / 3,
+                                  width: size.width / 2.5,
+                                ),
+                              ),
+                              SizedBox(
+                                child: ValueListenableBuilder(
+                                  valueListenable: valuen,
+                                  builder: (context, value, child) => Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          CupertinoIcons.minus_circle,
-                                          color: valuen.value == 1
-                                              ? Colors.teal.withOpacity(0.3)
-                                              : Colors.teal,
-                                          size: size.width / 15,
-                                        ),
-                                        onPressed: valuen.value == 1
-                                            ? null
-                                            : () {
-                                                valuen.value =
-                                                    counterminus(valuen.value);
-                                              },
-                                      ),
                                       Text(
-                                        '${valuen.value}',
+                                        'Bacon Burger',
+                                        textAlign: TextAlign.justify,
                                         style: TextStyle(
-                                          fontSize: size.width / 17,
-                                          color: Colors.teal,
+                                          fontSize: size.width / 20,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      IconButton(
-                                        icon: Icon(
-                                          CupertinoIcons.plus_circle,
-                                          color: valuen.value == 10
-                                              ? Colors.teal.withOpacity(0.3)
-                                              : Colors.teal,
-                                          size: size.width / 15,
-                                        ),
-                                        onPressed: valuen.value == 10
-                                            ? null
-                                            : () {
-                                                valuen.value =
-                                                    counterplus(valuen.value);
-                                              },
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          IconButton(
+                                            icon: Icon(
+                                              CupertinoIcons.minus_circle,
+                                              color: valuen.value == 1
+                                                  ? Colors.teal.withOpacity(0.3)
+                                                  : Colors.teal,
+                                              size: size.width / 15,
+                                            ),
+                                            onPressed: valuen.value == 1
+                                                ? null
+                                                : () {
+                                                    valuen.value = counterminus(
+                                                        valuen.value);
+                                                  },
+                                          ),
+                                          Text(
+                                            '${valuen.value}',
+                                            style: TextStyle(
+                                              fontSize: size.width / 17,
+                                              color: Colors.teal,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          IconButton(
+                                            icon: Icon(
+                                              CupertinoIcons.plus_circle,
+                                              color: valuen.value == 10
+                                                  ? Colors.teal.withOpacity(0.3)
+                                                  : Colors.teal,
+                                              size: size.width / 15,
+                                            ),
+                                            onPressed: valuen.value == 10
+                                                ? null
+                                                : () {
+                                                    valuen.value = counterplus(
+                                                        valuen.value);
+                                                  },
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        '${valuen.value * 15}\$',
+                                        style: TextStyle(
+                                            fontSize: size.width / 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.teal),
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    '${valuen.value*15}\$',
-                                    style: TextStyle(
-                                        fontSize: size.width / 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.teal),
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  Container(
-                    height: size.height / 10,
-                    width: size.width,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 3,
-                            blurRadius: 10,
-                            offset: const Offset(0, 3),
-                          ),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
-                            'Subtotal: R\$ 30,00',
-                            style: TextStyle(
-                                fontSize: 14, fontStyle: FontStyle.italic),
-                          ),
-                          Text(
-                            'Entrega: R\$ 8,00',
-                            style: TextStyle(
-                                fontSize: 14, fontStyle: FontStyle.italic),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                    ],
+                  );
+                },
               ),
             ),
           )
