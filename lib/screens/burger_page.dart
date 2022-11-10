@@ -23,7 +23,7 @@ class BurgerPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        actions: const [ShopIconAppBar()],
+        // actions: const [ShopIconAppBar()],
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -41,8 +41,7 @@ class BurgerPage extends StatelessWidget {
       ),
       bottomNavigationBar: BurgerBottonNavBar(
         counter: counter,
-        valor: map['valor'],
-        nome: map['nome'],
+        map: map,
       ),
     );
   }

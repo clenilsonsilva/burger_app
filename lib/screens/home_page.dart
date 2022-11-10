@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       drawer: const DrawerWidget(),
       appBar: AppBar(
         title: const Text('Hamburgueria'),
-        actions: const [ShopIconAppBar()],
+        // actions: const [ShopIconAppBar()],
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),

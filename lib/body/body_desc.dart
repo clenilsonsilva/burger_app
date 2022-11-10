@@ -12,7 +12,6 @@ class BodyDesc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List lista = [];
     Size size = MediaQuery.of(context).size;
     return SliverToBoxAdapter(
       child: Stack(
@@ -122,8 +121,6 @@ class BodyDesc extends StatelessWidget {
                                         onPressed: valuen.value == 10
                                             ? null
                                             : () {
-                                              lista.add(itemscard('nome', 'imagem', 1));
-                                              print(lista);
                                                 valuen.value =
                                                     counterplus(valuen.value);
                                               },

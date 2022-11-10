@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/class/listcard.dart';
+import 'package:flutter_cep/screens/shippin_page.dart';
 
 class BurgerBottonNavBar extends StatelessWidget {
   final ValueNotifier<int> counter;
-  final String nome;
-  final num valor;
+  final Map map;
   const BurgerBottonNavBar({
     super.key,
     required this.counter,
-    required this.valor,
-    required this.nome,
+    required this.map,
   });
 
   @override
@@ -26,7 +26,7 @@ class BurgerBottonNavBar extends StatelessWidget {
                 ValueListenableBuilder(
                   builder: (BuildContext context, value, child) {
                     return Text(
-                      'Total:  R\$ ${counter.value * valor},00',
+                      'Total:  R\$ ${counter.value * map['valor']},00',
                       style: const TextStyle(
                         fontSize: 19,
                         fontWeight: FontWeight.bold,
@@ -39,7 +39,17 @@ class BurgerBottonNavBar extends StatelessWidget {
               ],
             ),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                lista(map['nome'], map['images'], map['valor']);
+                print(listar());
+                Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ShippingPage(items: listar(), valuen: counter,
+                                  
+                                )),
+                      );
+              },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.teal),
                 padding: MaterialStateProperty.all(
