@@ -1,24 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/class/counter.dart';
+import 'package:flutter_cep/class/listcard.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../class/counter.dart';
+
 class BodyDesc extends StatelessWidget {
-  final String nome, desc;
-  final double rating;
-  final int minutes;
-  final num valor;
-  final counter = ValueNotifier<int>(1);
-  BodyDesc(
-      {super.key,
-      required this.valor,
-      required this.nome,
-      required this.desc,
-      required this.rating,
-      required this.minutes});
+  final Map map;
+  final ValueNotifier<int> valuen;
+  const BodyDesc({super.key, required this.valuen, required this.map});
 
   @override
   Widget build(BuildContext context) {
+    List lista = [];
     Size size = MediaQuery.of(context).size;
     return SliverToBoxAdapter(
       child: Stack(
@@ -42,7 +36,7 @@ class BodyDesc extends StatelessWidget {
                           children: [
                             RatingBar(
                               itemSize: size.width / 20,
-                              initialRating: rating,
+                              initialRating: map['rating'],
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               itemCount: 5,
@@ -62,7 +56,7 @@ class BodyDesc extends StatelessWidget {
                               onRatingUpdate: (rating) {},
                             ),
                             Text(
-                              'R\$ $valor,00',
+                              'R\$ ${map['valor']},00',
                               style: TextStyle(
                                 fontSize: size.width / 18,
                                 fontWeight: FontWeight.bold,
@@ -81,14 +75,14 @@ class BodyDesc extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              nome,
+                              map['nome'],
                               style: TextStyle(
                                 fontSize: size.width / 17,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             ValueListenableBuilder(
-                                valueListenable: counter,
+                                valueListenable: valuen,
                                 builder: (context, value, child) {
                                   return Row(
                                     mainAxisAlignment:
@@ -97,18 +91,20 @@ class BodyDesc extends StatelessWidget {
                                       IconButton(
                                         icon: Icon(
                                           CupertinoIcons.minus_circle,
-                                          color: counter.value == 1 ? Colors.teal.withOpacity(0.3) : Colors.teal,
+                                          color: valuen.value == 1
+                                              ? Colors.teal.withOpacity(0.3)
+                                              : Colors.teal,
                                           size: size.width / 15,
                                         ),
-                                        onPressed: counter.value == 1
+                                        onPressed: valuen.value == 1
                                             ? null
                                             : () {
-                                                counter.value =
-                                                    counterminus(counter.value);
+                                                valuen.value =
+                                                    counterminus(valuen.value);
                                               },
                                       ),
                                       Text(
-                                        '${counter.value}',
+                                        '${valuen.value}',
                                         style: TextStyle(
                                           fontSize: size.width / 17,
                                           color: Colors.teal,
@@ -118,15 +114,19 @@ class BodyDesc extends StatelessWidget {
                                       IconButton(
                                         icon: Icon(
                                           CupertinoIcons.plus_circle,
-                                          color: counter.value == 10 ? Colors.teal.withOpacity(0.3) : Colors.teal,
+                                          color: valuen.value == 10
+                                              ? Colors.teal.withOpacity(0.3)
+                                              : Colors.teal,
                                           size: size.width / 15,
                                         ),
-                                        onPressed: counter.value == 10
+                                        onPressed: valuen.value == 10
                                             ? null
                                             : () {
-                                                counter.value =
-                                                    counterplus(counter.value);
-                                        },
+                                              lista.add(itemscard('nome', 'imagem', 1));
+                                              print(lista);
+                                                valuen.value =
+                                                    counterplus(valuen.value);
+                                              },
                                       ),
                                     ],
                                   );
@@ -137,8 +137,8 @@ class BodyDesc extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
+                          map['desc'],
                           textAlign: TextAlign.justify,
-                          desc,
                           style: TextStyle(
                             fontSize: size.width / 20,
                             fontWeight: FontWeight.w400,
@@ -169,7 +169,7 @@ class BodyDesc extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '$minutes Minutes',
+                                  '${map['time']} Minutes',
                                   style: TextStyle(
                                     fontSize: size.width / 23,
                                     fontWeight: FontWeight.bold,

@@ -22,7 +22,7 @@ class App extends StatelessWidget {
         floatingActionButtonTheme:
             const FloatingActionButtonThemeData(backgroundColor: Colors.orange),
       ),
-      home: const HomePage(),
+      home: HomePage(),
       routes: {
         HomePage.tag: (_) => const HomePage(),
 

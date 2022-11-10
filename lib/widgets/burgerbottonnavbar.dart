@@ -2,7 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BurgerBottonNavBar extends StatelessWidget {
-  const BurgerBottonNavBar({super.key});
+  final ValueNotifier<int> counter;
+  final String nome;
+  final num valor;
+  const BurgerBottonNavBar({
+    super.key,
+    required this.counter,
+    required this.valor,
+    required this.nome,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +22,19 @@ class BurgerBottonNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              children: const [
-                Text(
-                  'Total:  R\$ 15,00',
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
-                  ),
+              children: [
+                ValueListenableBuilder(
+                  builder: (BuildContext context, value, child) {
+                    return Text(
+                      'Total:  R\$ ${counter.value * valor},00',
+                      style: const TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal,
+                      ),
+                    );
+                  },
+                  valueListenable: counter,
                 ),
               ],
             ),

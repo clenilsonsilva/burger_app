@@ -11,7 +11,7 @@ class ShopIconAppBar extends StatelessWidget {
       onPressed: () {
         Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const ShippingPage(image: 'images/bacon.png',)),
+    MaterialPageRoute(builder: (context) => ShippingPage(image: 'images/bacon.png',)),
   );
       },
     );

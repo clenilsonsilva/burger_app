@@ -2,29 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cep/screens/burger_page.dart';
 
 class HamburgueList extends StatelessWidget {
-  final String images_0, images_1, nome_0, nome_1, desc_0, desc_1;
-  final int row, minutes_0, minutes_1;
-  final num valor_0, valor_1;
-  final double height_0, width_0, height_1, width_1, rating_0, rating_1;
+  final Map map_0, map_1;
   const HamburgueList({
-    super.key,
-    required this.images_0,
-    required this.images_1,
-    required this.nome_0,
-    required this.nome_1,
-    required this.valor_0,
-    required this.valor_1,
-    required this.row,
-    required this.height_0,
-    required this.width_0,
-    required this.height_1,
-    required this.width_1,
-    required this.desc_0,
-    required this.desc_1,
-    required this.rating_0,
-    required this.rating_1,
-    required this.minutes_0,
-    required this.minutes_1,
+    super.key, required this.map_0, required this.map_1,
   });
 
   @override
@@ -32,15 +12,15 @@ class HamburgueList extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     int items = 2;
     Widget baconImage = SizedBox(
-      height: height_0,
-      width: width_0,
-      child: Image.asset(images_0),
+      height:  map_0['height'],
+      width: map_0['width'],
+      child: Image.asset(map_0['images']),
     );
 
     Widget chickenImage = SizedBox(
-      height: height_1,
-      width: width_1,
-      child: Image.asset(images_1),
+      height: map_1['height'],
+      width: map_1['width'],
+      child: Image.asset(map_1['images']),
     );
 
     return SliverToBoxAdapter(
@@ -51,7 +31,7 @@ class HamburgueList extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: items,
           itemBuilder: (context, index) {
-            bool reverse = row == 2 ? index.isEven : index.isOdd;
+            bool reverse = map_1['row'] == 2 ? index.isEven : index.isOdd;
             return Stack(
               children: [
                 Container(
@@ -64,12 +44,7 @@ class HamburgueList extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => BurgerPage(
-                                  nome: reverse ? nome_0 : nome_1,
-                                  desc: reverse ? desc_0 : desc_1,
-                                  rating: reverse ? rating_0 : rating_1,
-                                  minutes: reverse ? minutes_0 : minutes_1,
-                                  valor: reverse ? valor_0 : valor_1,
-                                  image: reverse ? images_0 : images_1,
+                                  map: reverse ? map_0: map_1,
                                 )),
                       );
                     },
@@ -89,7 +64,7 @@ class HamburgueList extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              reverse ? nome_0 : nome_1,
+                              reverse ? map_0['nome'] : map_1['nome'],
                               style: const TextStyle(color: Colors.white),
                             ),
                             const Spacer(),
@@ -98,8 +73,8 @@ class HamburgueList extends StatelessWidget {
                                 const Spacer(),
                                 Text(
                                   reverse
-                                      ? 'R\$ $valor_0,00'
-                                      : 'R\$ $valor_1,00',
+                                      ? 'R\$ ${map_0['valor']},00'
+                                      : 'R\$ ${map_1['valor']},00',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -133,12 +108,7 @@ class HamburgueList extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => BurgerPage(
-                                  nome: reverse ? nome_0 : nome_1,
-                                  desc: reverse ? desc_0 : desc_1,
-                                  rating: reverse ? rating_0 : rating_1,
-                                  minutes: reverse ? minutes_0 : minutes_1,
-                                  valor: reverse ? valor_0 : valor_1,
-                                  image: reverse ? images_0 : images_1,
+                                  map: reverse ? map_0: map_1,
                                 )),
                       );
                     },

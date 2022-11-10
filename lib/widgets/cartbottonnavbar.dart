@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CartBottomNavBar extends StatelessWidget {
-  const CartBottomNavBar({super.key});
+  final ValueNotifier<int> valuen;
+  const CartBottomNavBar({super.key, required this.valuen});
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +14,17 @@ class CartBottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              children: const [
-                Text(
-                  'Total:  R\$ 38,00',
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
-                  ),
-                ),
+              children: [
+                ValueListenableBuilder(
+                    valueListenable: valuen,
+                    builder: (context, value, child) => Text(
+                          'Total:  R\$ ${valuen.value},00',
+                          style: const TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal,
+                          ),
+                        )),
               ],
             ),
             ElevatedButton(

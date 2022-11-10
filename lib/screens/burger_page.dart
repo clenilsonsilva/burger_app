@@ -6,22 +6,12 @@ import '../widgets/shop_icon_appbar.dart';
 
 class BurgerPage extends StatelessWidget {
   static const tag = 'burger_page';
-  final String nome, desc, image;
-  final double rating;
-  final int minutes;
-  final num valor;
-  const BurgerPage(
-      {super.key,
-      required this.nome,
-      required this.desc,
-      required this.rating,
-      required this.minutes,
-      required this.valor,
-      required this.image});
+  final Map map;
+  const BurgerPage({super.key, required this.map});
 
   @override
   Widget build(BuildContext context) {
-    int counter = 1;
+    final counter = ValueNotifier<int>(1);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -42,17 +32,18 @@ class BurgerPage extends StatelessWidget {
         slivers: [
           HeaderTeste(
             a: 'burger',
-            imagem: image,
+            imagem: map['images'],
           ),
           BodyDesc(
-              valor: valor,
-              nome: nome,
-              desc: desc,
-              rating: rating,
-              minutes: minutes)
+              valuen: counter,
+              map: map,)
         ],
       ),
-      bottomNavigationBar: const BurgerBottonNavBar(),
+      bottomNavigationBar: BurgerBottonNavBar(
+        counter: counter,
+        valor: map['valor'],
+        nome: map['nome'],
+      ),
     );
   }
 }
