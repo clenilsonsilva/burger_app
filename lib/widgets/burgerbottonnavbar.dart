@@ -51,7 +51,6 @@ class BurgerBottonNavBar extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => ShippingPage(
                             items: listar(),
-                            valuen: counter,
                           )),
                 );
                 

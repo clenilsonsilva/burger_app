@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/burger_page.dart';
-import 'package:flutter_cep/screens/shippin_page.dart';
 
 import 'screens/home_page.dart';
 
@@ -22,7 +20,7 @@ class App extends StatelessWidget {
         floatingActionButtonTheme:
             const FloatingActionButtonThemeData(backgroundColor: Colors.orange),
       ),
-      home: HomePage(),
+      home: const HomePage(),
       routes: {
         HomePage.tag: (_) => const HomePage(),
 
