@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../class/counter.dart';
 import '../class/listcard.dart';
-// import '../widgets/cartbottonnavbar.dart';
 
 class ShippingPage extends StatelessWidget {
-  final teste = ValueNotifier<List>([1]);
-  final List items;
-  ShippingPage({super.key, required this.items});
+  final teste = ValueNotifier<int>(listreturn().length);
+  final subtotal = ValueNotifier<num>(total());
+  ShippingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    teste.value = items;
+    num entrega = 8;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -29,33 +27,18 @@ class ShippingPage extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         children: [
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: const [
-          //     Padding(
-          //       padding: EdgeInsets.only(
-          //         top: 20,
-          //         left: 10,
-          //         bottom: 10,
-          //       ),
-          //       child: Text(
-          //         'Order List',
-          //         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          Container(
+          SizedBox(
             height: size.height / 1.26,
             width: size.width,
             child: ValueListenableBuilder(
               valueListenable: teste,
               builder: (context, value, child) {
-                if (fun(notar()).isNotEmpty) {
+                if (listreturn().isNotEmpty) {
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
-                    itemCount: notar().length,
+                    itemCount: listreturn().length,
                     itemBuilder: (context, index) {
+                      // print(notar().length);
                       return Column(
                         children: [
                           Padding(
@@ -74,29 +57,30 @@ class ShippingPage extends StatelessWidget {
                                       offset: const Offset(0, 3),
                                     ),
                                   ]),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  SizedBox(
-                                    child: Image.asset(
-                                      items[index]['imagem'],
-                                      height: size.height / 3,
-                                      width: size.width / 2.5,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    child: ValueListenableBuilder(
-                                        valueListenable: notar()[index],
-                                        builder: (context, value, child) {
-                                          return Column(
+                              child: ValueListenableBuilder(
+                                  valueListenable: listreturn()[index]
+                                      ['notifier'],
+                                  builder: (context, value, child) {
+                                    return Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          child: Image.asset(
+                                            listreturn()[index]['imagem'],
+                                            height: size.height / 3,
+                                            width: size.width / 2.5,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
                                               Text(
-                                                items[index]['nome'],
+                                                listreturn()[index]['nome'],
                                                 textAlign: TextAlign.justify,
                                                 style: TextStyle(
                                                   fontSize: size.width / 20,
@@ -117,7 +101,9 @@ class ShippingPage extends StatelessWidget {
                                                         icon: Icon(
                                                           CupertinoIcons
                                                               .minus_circle,
-                                                          color: notar()[index]
+                                                          color: listreturn()[index]
+                                                                          [
+                                                                          'notifier']
                                                                       .value ==
                                                                   1
                                                               ? Colors.teal
@@ -126,23 +112,25 @@ class ShippingPage extends StatelessWidget {
                                                               : Colors.teal,
                                                           size: size.width / 15,
                                                         ),
-                                                        onPressed: notar()[
-                                                                        index]
+                                                        onPressed: listreturn()[
+                                                                            index]
+                                                                        [
+                                                                        'notifier']
                                                                     .value ==
                                                                 1
                                                             ? null
                                                             : () {
-                                                                notar()[index]
-                                                                        .value =
-                                                                    counterminus(
-                                                                        notar()[index]
-                                                                            .value);
-                                                                teste.value =
-                                                                    fun(notar());
+                                                                listaddcount(
+                                                                    index,
+                                                                    listreturn()[index]['notifier']
+                                                                            .value -
+                                                                        1);
+                                                                subtotal.value =
+                                                                    total();
                                                               },
                                                       ),
                                                       Text(
-                                                        '${notar()[index].value}',
+                                                        '${listreturn()[index]['notifier'].value}',
                                                         style: TextStyle(
                                                           fontSize:
                                                               size.width / 17,
@@ -155,7 +143,9 @@ class ShippingPage extends StatelessWidget {
                                                         icon: Icon(
                                                           CupertinoIcons
                                                               .plus_circle,
-                                                          color: notar()[index]
+                                                          color: listreturn()[index]
+                                                                          [
+                                                                          'notifier']
                                                                       .value ==
                                                                   10
                                                               ? Colors.teal
@@ -164,33 +154,32 @@ class ShippingPage extends StatelessWidget {
                                                               : Colors.teal,
                                                           size: size.width / 15,
                                                         ),
-                                                        onPressed: notar()[
-                                                                        index]
+                                                        onPressed: listreturn()[
+                                                                            index]
+                                                                        [
+                                                                        'notifier']
                                                                     .value ==
                                                                 10
                                                             ? null
                                                             : () {
-                                                                // print();
-                                                                notar()[index]
-                                                                        .value =
-                                                                    counterplus(
-                                                                        notar()[index]
-                                                                            .value);
-                                                                teste.value =
-                                                                    fun(notar());
+                                                                listaddcount(
+                                                                    index,
+                                                                    listreturn()[index]['notifier']
+                                                                            .value +
+                                                                        1);
+                                                                subtotal.value =
+                                                                    total();
                                                               },
                                                       ),
                                                     ],
                                                   ),
                                                   IconButton(
                                                       onPressed: () {
-                                                        print(index);
-                                                        print(notar().removeAt(index));
+                                                        listadelvoid(index);
                                                         teste.value =
-                                                            fun(notar());
-                                                        print(teste.value.length);
-                                                        // index = index - 1;
-                                                        print(index);
+                                                            listreturn().length;
+                                                        subtotal.value =
+                                                            total();
                                                       },
                                                       icon: Icon(
                                                         Icons.delete_outline,
@@ -200,21 +189,21 @@ class ShippingPage extends StatelessWidget {
                                                 ],
                                               ),
                                               Text(
-                                                '${notar()[index].value * items[index]['valor']}\$',
+                                                '${listreturn()[index]['notifier'].value * listreturn()[index]['valor']}\$',
                                                 style: TextStyle(
                                                     fontSize: size.width / 20,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.teal),
                                               ),
                                             ],
-                                          );
-                                        }),
-                                  ),
-                                ],
-                              ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }),
                             ),
                           ),
-                          index == teste.value.length -1
+                          index == teste.value - 1
                               ? Padding(
                                   padding: EdgeInsets.only(
                                       bottom: size.height / 30, top: 10),
@@ -238,7 +227,7 @@ class ShippingPage extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 10),
                                         child: ValueListenableBuilder(
-                                          valueListenable: teste,
+                                          valueListenable: subtotal,
                                           builder: (context, value, child) {
                                             return Row(
                                                 mainAxisAlignment:
@@ -269,9 +258,8 @@ class ShippingPage extends StatelessWidget {
                       );
                     },
                   );
-                }
-                else{
-                  return SizedBox();
+                } else {
+                  return const SizedBox();
                 }
               },
             ),
@@ -282,47 +270,59 @@ class ShippingPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           height: size.height / 10,
+          // decoration: const BoxDecoration(
+          //     color: Colors.teal,
+          //     borderRadius: BorderRadius.vertical(
+          //       top: Radius.circular(45),
+          //     ),
+          //     boxShadow: [
+          //       BoxShadow(blurRadius: 2),
+          //     ]),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   ValueListenableBuilder(
-                      valueListenable: teste,
+                      valueListenable: subtotal,
                       builder: (context, value, child) => Text(
-                            'Total:  R\$ ${total() + 8},00',
-                            style: const TextStyle(
-                              fontSize: 19,
+                            'Total:  R\$ ${subtotal.value + entrega},00',
+                            style: TextStyle(
+                              fontSize: size.height / 10 / 3.5,
                               fontWeight: FontWeight.bold,
                               color: Colors.teal,
                             ),
                           )),
                 ],
               ),
-              ElevatedButton(
+              TextButton(
                 onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.teal),
-                  padding: MaterialStateProperty.all(
-                    EdgeInsets.symmetric(
-                      vertical: size.height / 50,
-                      horizontal: size.width / 15,
-                    ),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
+                // style: ButtonStyle(
+                //   backgroundColor: MaterialStateProperty.all(Colors.teal),
+                //   padding: MaterialStateProperty.all(
+                //     EdgeInsets.symmetric(
+                //       vertical: size.height / 50,
+                //       horizontal: size.width / 15,
+                //     ),
+                //   ),
+                //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                //     RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(20),
+                //     ),
+                //   ),
+                // ),
+                child: Text(
+                  'Order Now',
+                  style: TextStyle(
+                      fontSize: size.height / 10 / 3.5, color: Colors.teal),
                 ),
-                child: const Text('Order Now'),
               ),
             ],
           ),
         ),
       ),
       extendBodyBehindAppBar: true,
-      extendBody: true,
+      extendBody: false,
     );
   }
 }

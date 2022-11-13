@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/class/listcard.dart';
 import '../class/items.dart';
 import '../header/header.dart';
 import '../body/categories.dart';
@@ -7,8 +8,9 @@ import '../widgets/DrawerWidget.dart';
 import '../widgets/shop_icon_appbar.dart';
 
 class HomePage extends StatelessWidget {
+  final tab = ValueNotifier<int>(0);
   static const tag = 'home_page';
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +19,36 @@ class HomePage extends StatelessWidget {
       drawer: const DrawerWidget(),
       appBar: AppBar(
         title: const Text('Hamburgueria'),
-        // actions: const [ShopIconAppBar()],
+        actions: listreturn().isNotEmpty ? const [ShopIconAppBar()] : null,
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: CustomScrollView(
-        scrollDirection: Axis.vertical,
-        slivers: [
-          HeaderTeste(a: 'home', imagem: 'a',),
-          const Categories(),
-          HamburgueList(
-            map_0: baconburger(),
-            map_1: chickenburger(),
-          ),
-          HamburgueList(
-            map_0: cheeseburger(),
-            map_1: veggibuger(),
-          ),
-
-        ],
+      body: ValueListenableBuilder(
+        valueListenable: tab,
+        builder: (context, value, child) {
+          return CustomScrollView(
+            scrollDirection: Axis.vertical,
+            slivers: [
+              HeaderTeste(
+                a: 'home',
+                imagem: 'a',
+              ),
+              Categories(
+                currentselecteditem: tab,
+              ),
+              HamburgueList(
+                map_0: categories(tab.value)[0],
+                map_1: categories(tab.value)[1],
+                tab: tab,
+              ),
+              HamburgueList(
+                map_0: categories(tab.value)[2],
+                map_1: categories(tab.value)[3],
+                tab: tab,
+              ),
+            ],
+          );
+        },
       ),
     );
   }

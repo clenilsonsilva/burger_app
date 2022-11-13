@@ -40,20 +40,19 @@ class BurgerBottonNavBar extends StatelessWidget {
             ),
             ElevatedButton.icon(
               onPressed: () {
-                lista(map['nome'], map['images'], map['valor']);
+                listaaddvoid(map['nome'], map['images'], map['valor'], counter);
+                // print(listreturn());
+                // listadelvoid(listreturn().length-1);
+                // print(listreturn().isEmpty);
                 // print(listar().length);
-                notifier(ValueNotifier(counter.value), map['valor']);
+                // notifier(ValueNotifier(counter.value), map['valor']);
                 // unity(ValueNotifier(counter.value), map['valor']);
                 // print(not);
                 // print(listar());
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => ShippingPage(
-                            items: listar(),
-                          )),
+                  MaterialPageRoute(builder: (context) => ShippingPage()),
                 );
-                
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.teal),

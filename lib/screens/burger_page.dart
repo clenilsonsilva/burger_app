@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/class/listcard.dart';
 import 'package:flutter_cep/header/header.dart';
 import '../body/body_desc.dart';
 import '../widgets/burgerbottonnavbar.dart';
@@ -23,7 +24,7 @@ class BurgerPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        // actions: const [ShopIconAppBar()],
+        actions: listreturn().isNotEmpty ? const[ShopIconAppBar()] : null,
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),

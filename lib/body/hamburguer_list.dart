@@ -3,8 +3,9 @@ import 'package:flutter_cep/screens/burger_page.dart';
 
 class HamburgueList extends StatelessWidget {
   final Map map_0, map_1;
+  final ValueNotifier<int> tab;
   const HamburgueList({
-    super.key, required this.map_0, required this.map_1,
+    super.key, required this.map_0, required this.map_1, required this.tab,
   });
 
   @override

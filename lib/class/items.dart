@@ -46,3 +46,22 @@ Map veggibuger() {
   'width': 150.0,
   'height': 160.0,};
 }
+
+
+
+List categories(int pos) {
+  if (pos==0) {
+  return [baconburger(),chickenburger(),cheeseburger(),veggibuger()];
+  }else if(pos==1) {
+    return [veggibuger(),cheeseburger(),chickenburger(),baconburger()];
+  }
+  else if(pos==2) {
+    return [chickenburger(),veggibuger(),baconburger(),cheeseburger()];
+  }
+  else if(pos==3) {
+    return [cheeseburger(),baconburger(),veggibuger(),chickenburger()];
+  }
+  else{
+    return[];
+  }
+}

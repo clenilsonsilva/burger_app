@@ -17,7 +17,7 @@ class HeaderTeste extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    height: size.height / 3,
+                    height: size.height / 3.5,
                     decoration: const BoxDecoration(
                         color: Colors.teal,
                         borderRadius: BorderRadius.vertical(
@@ -39,7 +39,7 @@ class HeaderTeste extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    height: size.height / 3,
+                                    height: size.height / 3.5,
                                     width: size.width,
                                     child: Image.asset(imagem),
                                   )

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Categories extends StatefulWidget {
-  const Categories({super.key});
+class Categories extends StatelessWidget {
+  final ValueNotifier<int> currentselecteditem ;
+  final List lista = ['Burger', 'Drink', 'Pizza', 'Hot Dog'];
+  Categories({super.key, required this.currentselecteditem});
 
-  @override
-  State<Categories> createState() => _CategoriesState();
-}
-
-class _CategoriesState extends State<Categories> {
-  int currentSelectedItem = 0;
   @override
   Widget build(BuildContext context) {
     int items = 4;
@@ -30,28 +26,32 @@ class _CategoriesState extends State<Categories> {
                       left: index == 0 ? 20 : 0,
                       right: 20,
                     ),
-                    child: GestureDetector(
-                      onTap: (() {
-                        setState(() {
-                          currentSelectedItem = index;
-                        });
-                      }),
-                      child: Card(
-                        color: index == currentSelectedItem
-                            ? Colors.black.withOpacity(0.7)
-                            : Colors.white,
-                        elevation: 3,
-                        margin: const EdgeInsets.all(10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
+                    child: ValueListenableBuilder(
+                      valueListenable: currentselecteditem,
+                      builder: (context, value, child) {
+                        return GestureDetector(
+                        onTap: () {
+                          currentselecteditem.value = index;
+                          print(currentselecteditem.value = index);
+                        },
+                        child: Card(
+                          color: index == currentselecteditem.value
+                              ? Colors.black.withOpacity(0.7)
+                              : Colors.white,
+                          elevation: 3,
+                          margin: const EdgeInsets.all(10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: Icon(
+                            Icons.fastfood,
+                            color: index == currentselecteditem.value
+                                ? Colors.white
+                                : Colors.black.withOpacity(0.7),
+                          ),
                         ),
-                        child: Icon(
-                          Icons.fastfood,
-                          color: index == currentSelectedItem
-                              ? Colors.white
-                              : Colors.black.withOpacity(0.7),
-                        ),
-                      ),
+                      );
+                      },
                     ),
                   )
                 ],
@@ -65,9 +65,9 @@ class _CategoriesState extends State<Categories> {
                     right: 20,
                   ),
                   child: Row(
-                    children: const [
+                    children: [
                       Spacer(),
-                      Text("Burguer"),
+                      Text(lista[index]),
                       Spacer(),
                     ],
                   ),
