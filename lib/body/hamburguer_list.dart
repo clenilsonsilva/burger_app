@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/screens/burger_page.dart';
 
+// ignore: must_be_immutable
 class HamburgueList extends StatelessWidget {
   final Map map_0, map_1;
   final ValueNotifier<int> tab;
   const HamburgueList({
-    super.key, required this.map_0, required this.map_1, required this.tab,
+    super.key,
+    required this.map_0,
+    required this.map_1,
+    required this.tab,
   });
 
   @override
@@ -13,7 +17,7 @@ class HamburgueList extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     int items = 2;
     Widget baconImage = SizedBox(
-      height:  map_0['height'],
+      height: map_0['height'],
       width: map_0['width'],
       child: Image.asset(map_0['images']),
     );
@@ -27,7 +31,7 @@ class HamburgueList extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         height: 240,
-        margin: const EdgeInsets.only(top: 0),
+        margin: const EdgeInsets.only(top: 10),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: items,
@@ -38,14 +42,14 @@ class HamburgueList extends StatelessWidget {
                 Container(
                   height: size.width / 1.7,
                   width: size.width / 2.05,
-                  margin: const EdgeInsets.only(left: 7, right: 0),
+                  margin: const EdgeInsets.only(left: 7),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => BurgerPage(
-                                  map: reverse ? map_0: map_1,
+                                  map: reverse ? map_0 : map_1,
                                 )),
                       );
                     },
@@ -101,15 +105,15 @@ class HamburgueList extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: reverse ? 25 : 25,
-                  left: reverse ? -10 : -5,
+                  top: reverse ? map_0['top'] : map_1['top'],
+                  left: reverse ? map_0['left'] : map_1['left'],
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => BurgerPage(
-                                  map: reverse ? map_0: map_1,
+                                  map: reverse ? map_0 : map_1,
                                 )),
                       );
                     },

@@ -15,9 +15,7 @@ void listaddcount(int pos, int value) {
 List listreturn() {
   return list;
 }
-// List listadel() {
-//   return list;
-// }
+
 
 List not = [];
 List test = [];
@@ -40,20 +38,5 @@ num total() {
   }
   return subtotal;
 }
-
-// List fun(List teste) {
-//   List lista = [];
-//   for (var i = 0; i < teste.length; i++) {
-//     lista.add(teste[i].value);
-//   }
-//   return lista;
-// }
-
-
-// // ValueNotifier<num> sumvaldef() {
-// //   return  ValueNotifier<num>(sumval);
-// // }
-
-
 
 

@@ -39,7 +39,7 @@ class HeaderTeste extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    height: size.height / 3.5,
+                                    height: size.height / 4,
                                     width: size.width,
                                     child: Image.asset(imagem),
                                   )
