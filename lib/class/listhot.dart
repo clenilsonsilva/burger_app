@@ -22,7 +22,7 @@ Map hotdogcatu() {
   'row': 1,
   'width': 180.0,
   'height': 180.0,
-  'left': -15.0,
+  'left': -10.0,
   'top': 40.0,};
 }
 

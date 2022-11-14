@@ -7,9 +7,9 @@ Map coca2l() {
   'images': 'images/coca2l.png',
   'row': 1,
   'width': 170.0,
-  'height': 150.0,
+  'height': 160.0,
   'left': 20.0,
-  'top': 45.0,};
+  'top': 35.0,};
 }
 
 Map guarana2l() {
@@ -21,7 +21,7 @@ Map guarana2l() {
   'images': 'images/guarana2l.png',
   'row': 1,
   'width': 170.0,
-  'height': 150.0,
+  'height': 140.0,
   'left': 20.0,
   'top': 45.0,};
 }
@@ -35,13 +35,13 @@ Map fanta2l() {
   'images': 'images/fanta2l.png',
   'row': 1,
   'width': 170.0,
-  'height': 150.0,
+  'height': 140.0,
   'left': 20.0,
   'top': 45.0,};
 }
 
 Map kuat2l() {
-  return {'nome': 'Kuat 2L', 
+  return {'nome': 'Guarana Kuat 2L', 
   'desc': 'Refrigerante Kuat de 2 litros',
   'time': 10,
   'valor': 6,
@@ -49,7 +49,7 @@ Map kuat2l() {
   'images': 'images/kuat2l.png',
   'row': 1,
   'width': 170.0,
-  'height': 150.0,
+  'height': 140.0,
   'left': 20.0,
   'top': 45.0,};
 }

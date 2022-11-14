@@ -9,7 +9,7 @@ Map pizzacalabresa() {
   'width': 150.0,
   'height': 140.0,
   'left': 0.0,
-  'top': 45.0,};
+  'top': 40.0,};
 }
 
 Map pizzaitaliana() {
@@ -23,7 +23,7 @@ Map pizzaitaliana() {
   'width': 150.0,
   'height': 150.0,
   'left': 0.0,
-  'top': 45.0,};
+  'top': 35.0,};
 }
 
 Map pizzamarguerita() {
@@ -37,7 +37,7 @@ Map pizzamarguerita() {
   'width': 150.0,
   'height': 150.0,
   'left': 0.0,
-  'top': 45.0,};
+  'top': 35.0,};
 }
 
 Map pizzawing() {
@@ -51,5 +51,5 @@ Map pizzawing() {
   'width': 150.0,
   'height': 150.0,
   'left': 0.0,
-  'top': 45.0,};
+  'top': 40.0,};
 }
