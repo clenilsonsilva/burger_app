@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../class/listcard.dart';
+
 class Categories extends StatelessWidget {
-  final ValueNotifier<int> currentselecteditem ;
   final List lista = ['Burger', 'Drink', 'Pizza', 'Hot Dog'];
-  Categories({super.key, required this.currentselecteditem});
+  Categories({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class Categories extends StatelessWidget {
                         return GestureDetector(
                         onTap: () {
                           currentselecteditem.value = index;
-                          print(currentselecteditem.value = index);
+                          // print(currentselecteditem.value = index);
                         },
                         child: Card(
                           color: index == currentselecteditem.value

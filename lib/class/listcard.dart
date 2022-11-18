@@ -16,6 +16,9 @@ List listreturn() {
   return list;
 }
 
+final currentselecteditem = ValueNotifier<int>(0);
+final listreturnotifier = ValueNotifier<int>(listreturn().length);
+
 
 List not = [];
 List test = [];

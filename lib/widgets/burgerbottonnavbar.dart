@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/class/listcard.dart';
-import 'package:flutter_cep/screens/shippin_page.dart';
+import 'package:flutter_cep/screens/home_page.dart';
+import 'package:path/path.dart';
+// import 'package:flutter_cep/screens/shippin_page.dart';
 
 class BurgerBottonNavBar extends StatelessWidget {
   final ValueNotifier<int> counter;
@@ -49,10 +51,11 @@ class BurgerBottonNavBar extends StatelessWidget {
                 // unity(ValueNotifier(counter.value), map['valor']);
                 // print(not);
                 // print(listar());
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ShippingPage()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => HomePage()),
+                // );
+                Navigator.of(context).pop(listreturnotifier.value=listreturn().length);
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.teal),
