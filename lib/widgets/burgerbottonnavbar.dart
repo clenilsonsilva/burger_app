@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/class/listcard.dart';
-import 'package:flutter_cep/screens/home_page.dart';
-import 'package:path/path.dart';
-// import 'package:flutter_cep/screens/shippin_page.dart';
 
 class BurgerBottonNavBar extends StatelessWidget {
   final ValueNotifier<int> counter;
@@ -43,18 +40,6 @@ class BurgerBottonNavBar extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () {
                 listaaddvoid(map['nome'], map['images'], map['valor'], counter);
-                // print(listreturn());
-                // listadelvoid(listreturn().length-1);
-                // print(listreturn().isEmpty);
-                // print(listar().length);
-                // notifier(ValueNotifier(counter.value), map['valor']);
-                // unity(ValueNotifier(counter.value), map['valor']);
-                // print(not);
-                // print(listar());
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => HomePage()),
-                // );
                 Navigator.of(context).pop(listreturnotifier.value=listreturn().length);
               },
               style: ButtonStyle(

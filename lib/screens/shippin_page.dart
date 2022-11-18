@@ -18,7 +18,8 @@ class ShippingPage extends StatelessWidget {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
-              Navigator.of(context).pushNamed('home_page');
+              Navigator.of(context)
+                  .pop(listreturnotifier.value = listreturn().length);
             },
           ),
           backgroundColor: Colors.teal),
@@ -180,6 +181,10 @@ class ShippingPage extends StatelessWidget {
                                                             listreturn().length;
                                                         subtotal.value =
                                                             total();
+                                                        if (teste.value == 0) {
+                                                          Navigator.of(context)
+                                                              .pop(listreturnotifier.value=listreturn().length);
+                                                        }
                                                       },
                                                       icon: Icon(
                                                         Icons.delete_outline,
@@ -270,14 +275,6 @@ class ShippingPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           height: size.height / 10,
-          // decoration: const BoxDecoration(
-          //     color: Colors.teal,
-          //     borderRadius: BorderRadius.vertical(
-          //       top: Radius.circular(45),
-          //     ),
-          //     boxShadow: [
-          //       BoxShadow(blurRadius: 2),
-          //     ]),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -286,7 +283,7 @@ class ShippingPage extends StatelessWidget {
                   ValueListenableBuilder(
                       valueListenable: subtotal,
                       builder: (context, value, child) => Text(
-                            'Total:  R\$ ${subtotal.value + entrega},00',
+                            subtotal.value==0 ? '' : 'Total: R\$ ${subtotal.value + entrega},00',
                             style: TextStyle(
                               fontSize: size.height / 10 / 3.5,
                               fontWeight: FontWeight.bold,
@@ -297,20 +294,6 @@ class ShippingPage extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {},
-                // style: ButtonStyle(
-                //   backgroundColor: MaterialStateProperty.all(Colors.teal),
-                //   padding: MaterialStateProperty.all(
-                //     EdgeInsets.symmetric(
-                //       vertical: size.height / 50,
-                //       horizontal: size.width / 15,
-                //     ),
-                //   ),
-                //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                //     RoundedRectangleBorder(
-                //       borderRadius: BorderRadius.circular(20),
-                //     ),
-                //   ),
-                // ),
                 child: Text(
                   'Order Now',
                   style: TextStyle(

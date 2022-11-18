@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/shippin_page.dart';
 
 class ListCard extends StatelessWidget {
   final String image, nome, descricao, valor;
@@ -60,7 +59,6 @@ class ListCard extends StatelessWidget {
                     'Taste Our hot Burger',
                     style: TextStyle(
                       fontSize: 14,
-                      // fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(

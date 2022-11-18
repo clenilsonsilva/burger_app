@@ -8,7 +8,6 @@ Map hotdogtrad() {
   'row': 1,
   'width': 150.0,
   'height': 150.0,
-  'left': -10.0,
   'top': 45.0,};
 }
 
