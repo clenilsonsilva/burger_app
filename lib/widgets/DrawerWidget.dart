@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/screens/myaccount.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -7,8 +8,8 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        children: const [
-          DrawerHeader(
+        children: [
+          const DrawerHeader(
             padding: EdgeInsets.zero,
             child: UserAccountsDrawerHeader(
               decoration: BoxDecoration(color: Colors.teal),
@@ -30,80 +31,80 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            leading: Icon(
-              CupertinoIcons.home,
-              color: Colors.teal,
-            ),
-            title: Text('Home', 
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-            ),),
-          ),
+          // ListTile(
+          //   leading: Icon(
+          //     CupertinoIcons.home,
+          //     color: Colors.teal,
+          //   ),
+          //   title: Text('Home',
+          //   style: TextStyle(
+          //     fontSize: 18,
+          //     fontWeight: FontWeight.bold
+          //   ),),
+          // ),
 
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               CupertinoIcons.person,
               color: Colors.teal,
             ),
-            title: Text('My Account', 
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-            ),),
+            title: const Text(
+              'My Account',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MyAccount()),
+                      );
+            },
           ),
 
-          ListTile(
+          const ListTile(
             leading: Icon(
               CupertinoIcons.cart_fill,
               color: Colors.teal,
             ),
-            title: Text('My Ordes', 
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-            ),),
+            title: Text(
+              'My Ordes',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
 
-          ListTile(
+          const ListTile(
             leading: Icon(
               CupertinoIcons.heart_fill,
               color: Colors.teal,
             ),
-            title: Text('Wish List', 
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-            ),),
+            title: Text(
+              'Wish List',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
 
-          ListTile(
+          const ListTile(
             leading: Icon(
               CupertinoIcons.settings,
               color: Colors.teal,
             ),
-            title: Text('Settings', 
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-            ),),
+            title: Text(
+              'Settings',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
 
-          ListTile(
+          const ListTile(
             leading: Icon(
               Icons.exit_to_app,
               color: Colors.teal,
             ),
-            title: Text('Log out', 
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-            ),),
+            title: Text(
+              'Log out',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
-      
     );
   }
 }
