@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/widgets/cadastro.dart';
+import 'package:flutter_cep/widgets/Cpe.dart';
 
 class MyAccount extends StatelessWidget {
   const MyAccount({super.key});
