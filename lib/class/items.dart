@@ -8,7 +8,7 @@ import 'listpizza.dart';
 
 
 
-List categories(int pos) {
+List listcategories(int pos) {
   if (pos==0) {
   return [baconburger(),chickenburger(),cheeseburger(),veggibuger()];
   }else if(pos==1) {

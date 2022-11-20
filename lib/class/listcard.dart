@@ -16,7 +16,7 @@ List listreturn() {
   return list;
 }
 
-final currentselecteditem = ValueNotifier<int>(0);
+final currentselecteditemhome = ValueNotifier<int>(0);
 final listreturnotifier = ValueNotifier<int>(listreturn().length);
 final tabcadastro = ValueNotifier<int>(0);
 

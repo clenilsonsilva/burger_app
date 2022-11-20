@@ -28,15 +28,15 @@ class Categories extends StatelessWidget {
                       right: 20,
                     ),
                     child: ValueListenableBuilder(
-                      valueListenable: currentselecteditem,
+                      valueListenable: currentselecteditemhome,
                       builder: (context, value, child) {
                         return GestureDetector(
                         onTap: () {
-                          currentselecteditem.value = index;
+                          currentselecteditemhome.value = index;
                           // print(currentselecteditem.value = index);
                         },
                         child: Card(
-                          color: index == currentselecteditem.value
+                          color: index == currentselecteditemhome.value
                               ? Colors.black.withOpacity(0.7)
                               : Colors.white,
                           elevation: 3,
@@ -46,7 +46,7 @@ class Categories extends StatelessWidget {
                           ),
                           child: Icon(
                             Icons.fastfood,
-                            color: index == currentselecteditem.value
+                            color: index == currentselecteditemhome.value
                                 ? Colors.white
                                 : Colors.black.withOpacity(0.7),
                           ),

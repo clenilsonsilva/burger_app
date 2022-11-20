@@ -4,7 +4,6 @@ import '../body/body_desc.dart';
 import '../widgets/burgerbottonnavbar.dart';
 
 class BurgerPage extends StatelessWidget {
-  static const tag = 'burger_page';
   final Map map;
   const BurgerPage({super.key, required this.map});
 
@@ -28,8 +27,7 @@ class BurgerPage extends StatelessWidget {
       body: CustomScrollView(
         scrollDirection: Axis.vertical,
         slivers: [
-          HeaderTeste(
-            a: 'burger',
+          Header(
             imagem: map['images'],
           ),
           BodyDesc(

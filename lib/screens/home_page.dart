@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/shippin_page.dart';
 import '../class/items.dart';
 import '../class/listcard.dart';
 import '../header/header.dart';
 import '../body/categories.dart';
 import '../body/hamburguer_list.dart';
 import '../widgets/DrawerWidget.dart';
+import 'shippin_page.dart';
 
 class HomePage extends StatelessWidget {
-  static const tag = 'home_page';
   const HomePage({super.key});
 
   @override
@@ -25,25 +24,22 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           ValueListenableBuilder(
-            valueListenable: currentselecteditem,
+            /*currentselecteditemhome e um valuenotifier localizado em listcard (local externo)
+            e escuta as mudancas feitas nas categorias*/
+            valueListenable: currentselecteditemhome, 
             builder: (context, value, child) {
               return CustomScrollView(
                 scrollDirection: Axis.vertical,
                 slivers: [
-                  HeaderTeste(
-                    a: 'home',
-                    imagem: 'a',
-                  ),
+                  const Header(),
                   Categories(),
                   HamburgueList(
-                    map_0: categories(currentselecteditem.value)[0],
-                    map_1: categories(currentselecteditem.value)[1],
-                    tab: currentselecteditem,
+                    map_0: listcategories(currentselecteditemhome.value)[0],
+                    map_1: listcategories(currentselecteditemhome.value)[1],
                   ),
                   HamburgueList(
-                    map_0: categories(currentselecteditem.value)[2],
-                    map_1: categories(currentselecteditem.value)[3],
-                    tab: currentselecteditem,
+                    map_0: listcategories(currentselecteditemhome.value)[2],
+                    map_1: listcategories(currentselecteditemhome.value)[3],
                   ),
                 ],
               );
