@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/class/listcard.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../class/counter.dart';
 
 class BodyDesc extends StatelessWidget {
   final Map map;
-  final ValueNotifier<int> valuen;
-  const BodyDesc({super.key, required this.valuen, required this.map});
+  final ValueNotifier<int> counter;
+  const BodyDesc({super.key, required this.counter, required this.map});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +32,7 @@ class BodyDesc extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            //ratingbar pacote do pub.dev que permite meia estrela
                             RatingBar(
                               itemSize: size.width / 20,
                               initialRating: map['rating'],
@@ -55,6 +55,7 @@ class BodyDesc extends StatelessWidget {
                               onRatingUpdate: (rating) {},
                             ),
                             Text(
+                              //valor do produto
                               'R\$ ${map['valor']},00',
                               style: TextStyle(
                                 fontSize: size.width / 18,
@@ -74,6 +75,7 @@ class BodyDesc extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
+                              //nome do produto
                               map['nome'],
                               style: TextStyle(
                                 fontSize: size.width / 17,
@@ -81,7 +83,8 @@ class BodyDesc extends StatelessWidget {
                               ),
                             ),
                             ValueListenableBuilder(
-                                valueListenable: valuen,
+                              //counter escuta as mudancas feitas na quantidade do produto
+                                valueListenable: counter,
                                 builder: (context, value, child) {
                                   return Row(
                                     mainAxisAlignment:
@@ -90,20 +93,24 @@ class BodyDesc extends StatelessWidget {
                                       IconButton(
                                         icon: Icon(
                                           CupertinoIcons.minus_circle,
-                                          color: valuen.value == 1
+                                          //desativa a cor do (-)
+                                          color: counter.value == 1
                                               ? Colors.teal.withOpacity(0.3)
                                               : Colors.teal,
                                           size: size.width / 15,
                                         ),
-                                        onPressed: valuen.value == 1
+                                        //desativa o botao se o valor for 1
+                                        onPressed: counter.value == 1
                                             ? null
                                             : () {
-                                                valuen.value =
-                                                    counterminus(valuen.value);
+                                              //se o valor for maior que 1 o botao habilita e ao clicar reduz o valor atual
+                                                counter.value =
+                                                    counterminus(counter.value);
                                               },
                                       ),
                                       Text(
-                                        '${valuen.value}',
+                                        //mostra q quantidade do produto
+                                        '${counter.value}',
                                         style: TextStyle(
                                           fontSize: size.width / 17,
                                           color: Colors.teal,
@@ -113,16 +120,19 @@ class BodyDesc extends StatelessWidget {
                                       IconButton(
                                         icon: Icon(
                                           CupertinoIcons.plus_circle,
-                                          color: valuen.value == 10
+                                          //desativa a cor do botao (+)
+                                          color: counter.value == 10
                                               ? Colors.teal.withOpacity(0.3)
                                               : Colors.teal,
                                           size: size.width / 15,
                                         ),
-                                        onPressed: valuen.value == 10
+                                        //desativa o botao se o valor dor 10
+                                        onPressed: counter.value == 10
                                             ? null
                                             : () {
-                                                valuen.value =
-                                                    counterplus(valuen.value);
+                                              //se o valor for menor que 10 o botao ativa e ao clicar adiciona o valor
+                                                counter.value =
+                                                    counterplus(counter.value);
                                               },
                                       ),
                                     ],
@@ -134,6 +144,7 @@ class BodyDesc extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
+                          //descricao do produto
                           map['desc'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
@@ -166,6 +177,7 @@ class BodyDesc extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
+                                  //tempo de emtrega em min
                                   '${map['time']} Minutes',
                                   style: TextStyle(
                                     fontSize: size.width / 23,

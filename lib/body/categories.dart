@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import '../class/listcard.dart';
 
 class Categories extends StatelessWidget {
+  /* classe que controla as categorias*/
   final List lista = ['Burger', 'Drink', 'Pizza', 'Hot Dog'];
   Categories({super.key});
 
   @override
   Widget build(BuildContext context) {
-    int items = 4;
+    int items = lista.length;
     return SliverToBoxAdapter(
       child: Container(
         height: 100,
@@ -28,12 +29,13 @@ class Categories extends StatelessWidget {
                       right: 20,
                     ),
                     child: ValueListenableBuilder(
+                      /* valuenotifier que contem o index da pagina atual*/
                       valueListenable: currentselecteditemhome,
                       builder: (context, value, child) {
                         return GestureDetector(
                         onTap: () {
+                          //ao clicar guarda o index atual
                           currentselecteditemhome.value = index;
-                          // print(currentselecteditem.value = index);
                         },
                         child: Card(
                           color: index == currentselecteditemhome.value
@@ -67,9 +69,10 @@ class Categories extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Spacer(),
+                      const Spacer(),
+                      //nome da categoria atual
                       Text(lista[index]),
-                      Spacer(),
+                      const Spacer(),
                     ],
                   ),
                 ),

@@ -46,6 +46,9 @@ class HomePage extends StatelessWidget {
             },
           ),
           ValueListenableBuilder(
+            /* listreturnotifier e um valuenotifier que retorna quantos produtos estao no carrinho
+            ao adicionar um item no carrinho ele habilita a opcao de entrar no carrinho
+            */
             valueListenable: listreturnotifier,
             builder: (context, value, child) {
               if (listreturnotifier.value > 0) {
@@ -91,6 +94,9 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                           Text(
+                            /* total() e uma funcao que acessa invidualmente os valores de cada produto no carrinho 
+                            e multiplica pela quantidade do produto (obs: todos os produtos tem seus notifiers 
+                            inviduais assim podem ser editados individulamente)*/
                             'R\$ ${total()},00',
                             style: TextStyle(
                               fontSize: size.width / 20,
@@ -101,6 +107,8 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
+                      /* ao clicar no container e direcionado para o carrinho, o container so aparece se o carrinho
+                       nao estiver vazio */
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => ShippingPage()),
@@ -109,6 +117,7 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               } else {
+                //jeito que achei de usar um widget nullo
                 return const SizedBox();
               }
             },

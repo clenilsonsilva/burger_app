@@ -6,7 +6,7 @@ void listaaddvoid(String nome, String imagem, num valor, ValueNotifier<int> noti
   list.add({'nome': nome, 'imagem': imagem, 'valor': valor, 'notifier': notifier});
 }
 void listadelvoid(int pos) {
-  list.isNotEmpty ? list.removeAt(pos) : null;
+  if (list.isNotEmpty) list.removeAt(pos);
 }
 void listaddcount(int pos, int value) {
   list[pos]['notifier'].value = value;

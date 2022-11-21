@@ -4,11 +4,13 @@ import '../body/body_desc.dart';
 import '../widgets/burgerbottonnavbar.dart';
 
 class BurgerPage extends StatelessWidget {
+  //map recebe as informacoes do produto que foi clicado na homepage
   final Map map;
   const BurgerPage({super.key, required this.map});
 
   @override
   Widget build(BuildContext context) {
+    //counter e o valuenotifier individual do produto, toda vez que a pagina e carregada o valor e setado para 1
     final counter = ValueNotifier<int>(1);
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -28,14 +30,17 @@ class BurgerPage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         slivers: [
           Header(
+            //header de descricao recebe uma imagem
             imagem: map['images'],
           ),
           BodyDesc(
-              valuen: counter,
+            //body da pagina recebe o counter e o map com as infos do produto
+              counter: counter,
               map: map,)
         ],
       ),
       bottomNavigationBar: BurgerBottonNavBar(
+        //botao de navegacao recebe o counter e o map
         counter: counter,
         map: map,
       ),
