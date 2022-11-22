@@ -9,6 +9,7 @@ import 'listpizza.dart';
 
 
 List listcategories(int pos) {
+  //organiza os produtos por categorias e acessa usando a posicao
   if (pos==0) {
   return [baconburger(),chickenburger(),cheeseburger(),veggibuger()];
   }else if(pos==1) {

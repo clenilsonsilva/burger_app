@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cep/class/listcard.dart';
 
 class Cadastro extends StatelessWidget {
+  //widget da drawerpage cadastro pagamento enderecos
   final double width, height;
   const Cadastro({super.key, required this.height, required this.width});
 
@@ -17,6 +18,7 @@ class Cadastro extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 40),
               child: ValueListenableBuilder(
+                //ao ser mudado a tab e rebuildado
                 valueListenable: tabcadastro,
                 builder: (context, value, child) {
                   return Row(
@@ -45,6 +47,7 @@ class Cadastro extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
+                          //atualiza o valor da tab
                           tabcadastro.value = 0;
                         },
                       ),
@@ -71,6 +74,7 @@ class Cadastro extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
+                          //atualiza o valor da tab
                           tabcadastro.value = 1;
                         },
                       ),
@@ -97,6 +101,7 @@ class Cadastro extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
+                          //atualiza o valor da tab
                           tabcadastro.value = 2;
                         },
                       ),

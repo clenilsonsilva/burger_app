@@ -1,3 +1,4 @@
+//map dos hotdogs
 Map hotdogtrad() {
   return {'nome': 'Hot Dog Tradicional', 
   'desc': 'Salsicha, Cenoura, Ervilha, Milho, Batata, Queijo Parmesao, Ovo',

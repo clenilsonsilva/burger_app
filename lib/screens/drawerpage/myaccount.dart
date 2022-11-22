@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cep/widgets/Cpe.dart';
 
 class MyAccount extends StatelessWidget {
+  //drawer informacoes do usuario
   const MyAccount({super.key});
 
   @override

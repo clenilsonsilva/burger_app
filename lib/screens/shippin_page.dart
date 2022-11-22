@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import '../class/listcard.dart';
 
 class ShippingPage extends StatelessWidget {
-  final teste = ValueNotifier<int>(listreturn().length);
+  //tela do carrinho
+  //subtotal e um notifier que retorna o ssbutotal dos produtos no carrinho
   final subtotal = ValueNotifier<num>(total());
   ShippingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //valor da entrega
     num entrega = 8;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -18,6 +20,7 @@ class ShippingPage extends StatelessWidget {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
+              //retorna para a homepage atualiza o notifier
               Navigator.of(context)
                   .pop(listreturnotifier.value = listreturn().length);
             },
@@ -32,14 +35,14 @@ class ShippingPage extends StatelessWidget {
             height: size.height / 1.26,
             width: size.width,
             child: ValueListenableBuilder(
-              valueListenable: teste,
+              valueListenable: listreturnotifier,
               builder: (context, value, child) {
+                //toda vez que houver uma mudanca no tamanho da lista do carrinho esse componente e rebuildado
                 if (listreturn().isNotEmpty) {
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: listreturn().length,
                     itemBuilder: (context, index) {
-                      // print(notar().length);
                       return Column(
                         children: [
                           Padding(
@@ -59,6 +62,7 @@ class ShippingPage extends StatelessWidget {
                                     ),
                                   ]),
                               child: ValueListenableBuilder(
+                                //toda vez que houver uma mundanca na quantidade do produto o produto e rebuildado individualmente
                                   valueListenable: listreturn()[index]
                                       ['notifier'],
                                   builder: (context, value, child) {
@@ -102,6 +106,7 @@ class ShippingPage extends StatelessWidget {
                                                         icon: Icon(
                                                           CupertinoIcons
                                                               .minus_circle,
+                                                              //desabilita cor
                                                           color: listreturn()[index]
                                                                           [
                                                                           'notifier']
@@ -113,6 +118,7 @@ class ShippingPage extends StatelessWidget {
                                                               : Colors.teal,
                                                           size: size.width / 15,
                                                         ),
+                                                        //desabilita o botao do valor 
                                                         onPressed: listreturn()[
                                                                             index]
                                                                         [
@@ -121,16 +127,19 @@ class ShippingPage extends StatelessWidget {
                                                                 1
                                                             ? null
                                                             : () {
+                                                              //e passado o index atual e subtrai - 1 do produto clicado
                                                                 listaddcount(
                                                                     index,
                                                                     listreturn()[index]['notifier']
                                                                             .value -
                                                                         1);
+                                                                        //o valor subtotal e atualizado
                                                                 subtotal.value =
                                                                     total();
                                                               },
                                                       ),
                                                       Text(
+                                                        //retorna a quantidade do produto
                                                         '${listreturn()[index]['notifier'].value}',
                                                         style: TextStyle(
                                                           fontSize:
@@ -144,6 +153,7 @@ class ShippingPage extends StatelessWidget {
                                                         icon: Icon(
                                                           CupertinoIcons
                                                               .plus_circle,
+                                                              //desabilita a cor
                                                           color: listreturn()[index]
                                                                           [
                                                                           'notifier']
@@ -155,6 +165,7 @@ class ShippingPage extends StatelessWidget {
                                                               : Colors.teal,
                                                           size: size.width / 15,
                                                         ),
+                                                        //desabilita o clique do botao
                                                         onPressed: listreturn()[
                                                                             index]
                                                                         [
@@ -163,11 +174,13 @@ class ShippingPage extends StatelessWidget {
                                                                 10
                                                             ? null
                                                             : () {
+                                                              //adiciona + 1 no produto clicado
                                                                 listaddcount(
                                                                     index,
                                                                     listreturn()[index]['notifier']
                                                                             .value +
                                                                         1);
+                                                                        //atualiza o subtotal
                                                                 subtotal.value =
                                                                     total();
                                                               },
@@ -175,13 +188,18 @@ class ShippingPage extends StatelessWidget {
                                                     ],
                                                   ),
                                                   IconButton(
+                                                    //funcao para deletar um produto
                                                       onPressed: () {
+                                                        //deleta o produto clicado
                                                         listadelvoid(index);
-                                                        teste.value =
+                                                        //atualiza a quantidade de produtos do carrinho
+                                                        listreturnotifier.value =
                                                             listreturn().length;
+                                                            //atualiza o subtotal
                                                         subtotal.value =
                                                             total();
-                                                        if (teste.value == 0) {
+                                                        if (listreturnotifier.value == 0) {
+                                                          //se o carrinho estiver vazio e direcionado a home page e atualiza quantidade de produtos
                                                           Navigator.of(context)
                                                               .pop(listreturnotifier.value=listreturn().length);
                                                         }
@@ -194,6 +212,7 @@ class ShippingPage extends StatelessWidget {
                                                 ],
                                               ),
                                               Text(
+                                                //mostra o valor do notifier multiplicado pelo valor do produto
                                                 '${listreturn()[index]['notifier'].value * listreturn()[index]['valor']}\$',
                                                 style: TextStyle(
                                                     fontSize: size.width / 20,
@@ -208,7 +227,8 @@ class ShippingPage extends StatelessWidget {
                                   }),
                             ),
                           ),
-                          index == teste.value - 1
+                          index == listreturnotifier.value - 1
+                          //se o index for o ultimo entao o subtotal e valor da entrega e adicionado
                               ? Padding(
                                   padding: EdgeInsets.only(
                                       bottom: size.height / 30, top: 10),
@@ -240,15 +260,17 @@ class ShippingPage extends StatelessWidget {
                                                         .spaceBetween,
                                                 children: [
                                                   Text(
+                                                    //subtotal dos produtos
                                                     'Subtotal: R\$ ${total()},00',
                                                     style: const TextStyle(
                                                         fontSize: 14,
                                                         fontStyle:
                                                             FontStyle.italic),
                                                   ),
-                                                  const Text(
-                                                    'Entrega: R\$ 8,00',
-                                                    style: TextStyle(
+                                                  Text(
+                                                    //valor da entrega
+                                                    'Entrega: R\$ $entrega,00',
+                                                    style: const TextStyle(
                                                         fontSize: 14,
                                                         fontStyle:
                                                             FontStyle.italic),
@@ -258,12 +280,14 @@ class ShippingPage extends StatelessWidget {
                                         ),
                                       )),
                                 )
+                                //jeito de usar um widget nulo
                               : const SizedBox(),
                         ],
                       );
                     },
                   );
                 } else {
+                  //jeito de usar um widget nulo
                   return const SizedBox();
                 }
               },
@@ -283,6 +307,7 @@ class ShippingPage extends StatelessWidget {
                   ValueListenableBuilder(
                       valueListenable: subtotal,
                       builder: (context, value, child) => Text(
+                        //subtotal + entrega
                             subtotal.value==0 ? '' : 'Total: R\$ ${subtotal.value + entrega},00',
                             style: TextStyle(
                               fontSize: size.height / 10 / 3.5,
@@ -295,6 +320,7 @@ class ShippingPage extends StatelessWidget {
               TextButton(
                 onPressed: () {},
                 child: Text(
+                  //botao para fazer pedido
                   'Order Now',
                   style: TextStyle(
                       fontSize: size.height / 10 / 3.5, color: Colors.teal),
@@ -305,7 +331,6 @@ class ShippingPage extends StatelessWidget {
         ),
       ),
       extendBodyBehindAppBar: true,
-      extendBody: false,
     );
   }
 }

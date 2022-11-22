@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/myaccount.dart';
+import 'package:flutter_cep/screens/drawerpage/myaccount.dart';
 
 class DrawerWidget extends StatelessWidget {
+  //lista dos drawers
   const DrawerWidget({super.key});
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class DrawerWidget extends StatelessWidget {
             child: UserAccountsDrawerHeader(
               decoration: BoxDecoration(color: Colors.teal),
               accountName: Text(
+                //nome usuario
                 "Programmer",
                 style: TextStyle(
                   fontSize: 20,
@@ -21,29 +23,20 @@ class DrawerWidget extends StatelessWidget {
                 ),
               ),
               accountEmail: Text(
+                //email usuario
                 'ifpa.edu.com.br',
                 style: TextStyle(
                   fontSize: 16,
                 ),
               ),
               currentAccountPicture: CircleAvatar(
+                //imagem usuario
                 backgroundImage: AssetImage("images/ifpa.jpg"),
               ),
             ),
           ),
-          // ListTile(
-          //   leading: Icon(
-          //     CupertinoIcons.home,
-          //     color: Colors.teal,
-          //   ),
-          //   title: Text('Home',
-          //   style: TextStyle(
-          //     fontSize: 18,
-          //     fontWeight: FontWeight.bold
-          //   ),),
-          // ),
-
           ListTile(
+            //minha conta
             leading: const Icon(
               CupertinoIcons.person,
               color: Colors.teal,
@@ -53,6 +46,7 @@ class DrawerWidget extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             onTap: () {
+              //abre a pagina com as infos
               Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const MyAccount()),
@@ -61,6 +55,7 @@ class DrawerWidget extends StatelessWidget {
           ),
 
           const ListTile(
+            //pedidos
             leading: Icon(
               CupertinoIcons.cart_fill,
               color: Colors.teal,
@@ -72,6 +67,7 @@ class DrawerWidget extends StatelessWidget {
           ),
 
           const ListTile(
+            //favoritos
             leading: Icon(
               CupertinoIcons.heart_fill,
               color: Colors.teal,
@@ -83,6 +79,7 @@ class DrawerWidget extends StatelessWidget {
           ),
 
           const ListTile(
+            //configs
             leading: Icon(
               CupertinoIcons.settings,
               color: Colors.teal,
@@ -94,6 +91,7 @@ class DrawerWidget extends StatelessWidget {
           ),
 
           const ListTile(
+            //sair da conta
             leading: Icon(
               Icons.exit_to_app,
               color: Colors.teal,

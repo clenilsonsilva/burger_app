@@ -1,3 +1,4 @@
+//lista com as infos dos burgers
 Map chickenburger() {
   return {'nome': 'Chicken Burger', 
   'desc': 'Hamburger Chicken burger sandwich Fast food, hamburger, burger, burger sandwich, food, recipe, cheeseburger',
