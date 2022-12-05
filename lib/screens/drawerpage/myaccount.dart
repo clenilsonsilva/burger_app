@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/widgets/Cpe.dart';
 
+import '../../widgets/cadastro.dart';
+
 class MyAccount extends StatelessWidget {
   //drawer informacoes do usuario
   const MyAccount({super.key});
@@ -32,6 +34,8 @@ class MyAccount extends StatelessWidget {
         scrollDirection: Axis.vertical,
         slivers: [
           Cadastro(height: size.height, width: size.width),
+          CadastroBody(height: size.height, width: size.width),
+
           
         ],
       ),
