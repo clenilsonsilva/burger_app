@@ -13,7 +13,7 @@ class Cadastro extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 40),
+            padding: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
             child: ValueListenableBuilder(
               //ao ser mudado a tab e rebuildado
               valueListenable: tabcadastro,
@@ -24,7 +24,7 @@ class Cadastro extends StatelessWidget {
                     GestureDetector(
                       child: Container(
                         width: width / 4,
-                        height: height / 20,
+                        height: height / 25,
                         decoration: BoxDecoration(
                           border: tabcadastro.value==0 ? null : Border.all(),
                           color: tabcadastro.value==0 ? Colors.teal : Colors.white,
@@ -51,7 +51,7 @@ class Cadastro extends StatelessWidget {
                     GestureDetector(
                       child: Container(
                         width: width / 4,
-                        height: height / 20,
+                        height: height / 25,
                         decoration: BoxDecoration(
                           border: tabcadastro.value==1 ? null : Border.all(),
                           color: tabcadastro.value==1 ? Colors.teal : Colors.white,
@@ -78,7 +78,7 @@ class Cadastro extends StatelessWidget {
                     GestureDetector(
                       child: Container(
                         width: width / 4,
-                        height: height / 20,
+                        height: height / 25,
                         decoration: BoxDecoration(
                           border: tabcadastro.value==2 ? null : Border.all(),
                           color: tabcadastro.value==2 ? Colors.teal : Colors.white,
