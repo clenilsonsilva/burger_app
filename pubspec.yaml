@@ -81,6 +81,7 @@ flutter:
     - images/fanta2l.png
     - images/guarana2l.png
     - images/kuat2l.png
+    - images/creditcard.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

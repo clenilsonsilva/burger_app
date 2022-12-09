@@ -24,14 +24,13 @@ class Cadastro extends StatelessWidget {
                     GestureDetector(
                       child: Container(
                         width: width / 4,
-                        height: height / 25,
+                        height: height / 20,
                         decoration: BoxDecoration(
                           border: tabcadastro.value==0 ? null : Border.all(),
                           color: tabcadastro.value==0 ? Colors.teal : Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 7),
+                        child: Center(
                           child: Text(
                             'cadastro',
                             textAlign: TextAlign.center,
@@ -51,14 +50,13 @@ class Cadastro extends StatelessWidget {
                     GestureDetector(
                       child: Container(
                         width: width / 4,
-                        height: height / 25,
+                        height: height / 20,
                         decoration: BoxDecoration(
                           border: tabcadastro.value==1 ? null : Border.all(),
                           color: tabcadastro.value==1 ? Colors.teal : Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 7),
+                        child: Center(
                           child: Text(
                             'pagamento',
                             textAlign: TextAlign.center,
@@ -78,14 +76,13 @@ class Cadastro extends StatelessWidget {
                     GestureDetector(
                       child: Container(
                         width: width / 4,
-                        height: height / 25,
+                        height: height / 20,
                         decoration: BoxDecoration(
                           border: tabcadastro.value==2 ? null : Border.all(),
                           color: tabcadastro.value==2 ? Colors.teal : Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 7),
+                        child: Center(
                           child: Text(
                             'endereços',
                             textAlign: TextAlign.center,

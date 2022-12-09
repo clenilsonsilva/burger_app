@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/class/listcard.dart';
-import 'package:flutter_cep/widgets/Cpe.dart';
-
+import '../../class/listcard.dart';
+import '../../widgets/Cpe.dart';
 import '../../widgets/cadastro.dart';
+import '../../widgets/enderecos.dart';
+import '../../widgets/pagamentos.dart';
 
 class MyAccount extends StatelessWidget {
   //drawer informacoes do usuario
@@ -37,10 +38,22 @@ class MyAccount extends StatelessWidget {
             scrollDirection: Axis.vertical,
             slivers: [
               Cadastro(height: size.height, width: size.width),
-              CadastroBody(height: size.height, width: size.width)
+              ValueListenableBuilder(
+                valueListenable: tabcadastro,
+                builder: (context, value, child) {
+                  if (tabcadastro.value == 0) {
+                    return CadastroBody(height: size.height, width: size.width);
+                  }
+                  else if(tabcadastro.value==1) {
+                    return const Pagamento();
+                  }
+                  else {
+                    return const Enderecos();
+                  }
+                },
+              ),
             ],
           ),
-          
         ],
       ),
     );
