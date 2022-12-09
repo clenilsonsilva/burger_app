@@ -31,11 +31,16 @@ class MyAccount extends StatelessWidget {
         centerTitle: false,
       ),
       // extendBodyBehindAppBar: true,
-      body: CustomScrollView(
-        scrollDirection: Axis.vertical,
-        slivers: [
-          Cadastro(height: size.height, width: size.width),
-          CadastroBody(height: size.height, width: size.width)
+      body: Stack(
+        children: [
+          CustomScrollView(
+            scrollDirection: Axis.vertical,
+            slivers: [
+              Cadastro(height: size.height, width: size.width),
+              CadastroBody(height: size.height, width: size.width)
+            ],
+          ),
+          
         ],
       ),
     );
