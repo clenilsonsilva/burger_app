@@ -264,7 +264,7 @@ class CadastroBody extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () {},
+              // onTap: () {},
             ),
           )
         ],

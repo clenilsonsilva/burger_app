@@ -32,9 +32,9 @@ class Pagamento extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Addcard()),
-                      );
+                  context,
+                  MaterialPageRoute(builder: (context) => Addcard()),
+                );
               },
             )
           ],

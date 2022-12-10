@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/screens/drawerpage/myaccount.dart';
+import 'package:flutter_cep/screens/login_page.dart';
 
 class DrawerWidget extends StatelessWidget {
   //lista dos drawers
@@ -35,6 +36,25 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
           ),
+          ListTile(
+            //minha conta
+            leading: const Icon(
+              CupertinoIcons.person,
+              color: Colors.teal,
+            ),
+            title: const Text(
+              'Entrar/Cadastrar',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              //abre a pagina com as infos
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Login()),
+                      );
+            },
+          ),  
+
           ListTile(
             //minha conta
             leading: const Icon(
