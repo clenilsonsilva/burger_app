@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CadastroBody extends StatelessWidget {
   //widget da drawerpage cadastro pagamento enderecos
   final double width, height;
+  final bool term;
   final nome = TextEditingController();
   final sobrenome = TextEditingController();
   final nascimento = TextEditingController();
@@ -10,7 +11,13 @@ class CadastroBody extends StatelessWidget {
   final email = TextEditingController();
   final cpf = TextEditingController();
   final novasenha = TextEditingController();
-  CadastroBody({super.key, required this.height, required this.width});
+  final box = ValueNotifier<bool>(false);
+  final obscureText = ValueNotifier<bool>(true);
+  CadastroBody(
+      {super.key,
+      required this.height,
+      required this.width,
+      required this.term});
 
   @override
   Widget build(BuildContext context) {
@@ -124,14 +131,14 @@ class CadastroBody extends StatelessWidget {
                         height: 40,
                         width: size.width / 1.2,
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
+                          decoration: InputDecoration(
+                              focusedBorder: const UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.teal)),
-                              enabledBorder: UnderlineInputBorder(
+                              enabledBorder: const UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.black)),
                               hintText: 'Celular',
-                              hintStyle: TextStyle(fontSize: 18, height: 0.1),
-                              suffixIcon: Icon(Icons.edit)),
+                              hintStyle: const TextStyle(fontSize: 18, height: 0.1),
+                              suffixIcon: term==true ? const SizedBox() : const Icon(Icons.edit, color: Colors.teal,)),
                           controller: celular,
                           keyboardType: TextInputType.phone,
                           style: const TextStyle(fontSize: 18),
@@ -222,22 +229,42 @@ class CadastroBody extends StatelessWidget {
                       SizedBox(
                         height: 40,
                         width: size.width / 1.2,
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.teal)),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black)),
-                            hintText: 'Nova senha',
-                            hintStyle: TextStyle(fontSize: 18, height: 0.1),
-                            suffixIcon: Icon(
-                              Icons.visibility,
-                              color: Colors.teal,
-                            ),
-                          ),
-                          controller: novasenha,
-                          keyboardType: TextInputType.text,
-                          style: const TextStyle(fontSize: 18),
+                        child: ValueListenableBuilder(
+                          valueListenable: obscureText,
+                          builder: (context, value, child) {
+                            return TextFormField(
+                              decoration: InputDecoration(
+                                focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.teal)),
+                                enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.black)),
+                                hintText: 'Nova senha',
+                                hintStyle: const TextStyle(fontSize: 18, height: 0.1),
+                                suffixIcon: value==true ? GestureDetector(
+                                  child: const Icon(
+                                    Icons.visibility_off,
+                                    color: Colors.teal,
+                                  ),
+                                  onTap: () {
+                                    obscureText.value = false;
+                                  },
+                                ) : GestureDetector(
+                                  child: const Icon(
+                                    Icons.visibility,
+                                    color: Colors.teal,
+                                  ),
+                                  onTap: () {
+                                    obscureText.value = true;
+                                  },
+                                ),
+                              ),
+                              controller: novasenha,
+                              keyboardType: TextInputType.text,
+                              style: const TextStyle(fontSize: 18),
+                              obscureText: obscureText.value,
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -246,6 +273,54 @@ class CadastroBody extends StatelessWidget {
               ],
             ),
           ),
+          term == true
+              ? Positioned(
+                  bottom: size.height / 11,
+                  left: size.width / 20,
+                  child: SizedBox(
+                    width: size.width,
+                    child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ValueListenableBuilder(
+                          valueListenable: box,
+                          builder: (context, value, child) {
+                            if (value == true) {
+                              return GestureDetector(
+                                child: const Icon(
+                                  Icons.check_box,
+                                  color: Colors.teal,
+                                ),
+                                onTap: () {
+                                  box.value = false;
+                                },
+                              );
+                            } else {
+                              return GestureDetector(
+                                child: const Icon(
+                                  Icons.check_box_outline_blank,
+                                  color: Colors.teal,
+                                ),
+                                onTap: () {
+                                  box.value = true;
+                                },
+                              );
+                            }
+                          },
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10, top: 5),
+                          child: Text(
+                            'li e aceito os termos de uso e privacidade\n do aplicativo',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              : const SizedBox(),
           Positioned(
             bottom: 0,
             right: size.width / 4,

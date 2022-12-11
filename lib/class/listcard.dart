@@ -37,4 +37,10 @@ num total() {
   return subtotal;
 }
 
+List listLogin = [];
+void listAddLoginVoid(String email, String senha) {
+  //adiciona infos a lista
+  listLogin.add({'email': email, 'senha': senha});
+}
+
 

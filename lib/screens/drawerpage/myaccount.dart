@@ -42,7 +42,7 @@ class MyAccount extends StatelessWidget {
                 valueListenable: tabcadastro,
                 builder: (context, value, child) {
                   if (tabcadastro.value == 0) {
-                    return CadastroBody(height: size.height, width: size.width);
+                    return CadastroBody(height: size.height, width: size.width, term: false,);
                   }
                   else if(tabcadastro.value==1) {
                     return const Pagamento();
