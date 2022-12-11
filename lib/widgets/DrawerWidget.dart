@@ -50,7 +50,7 @@ class DrawerWidget extends StatelessWidget {
               //abre a pagina com as infos
               Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Login()),
+                        MaterialPageRoute(builder: (context) => Login()),
                       );
             },
           ),  
