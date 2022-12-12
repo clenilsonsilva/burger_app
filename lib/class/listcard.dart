@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 
 //List tem as informacoes dos produtos adicionados ao carrinho
 List list = [];
-void listaaddvoid(String nome, String imagem, num valor, ValueNotifier<int> notifier) {
+void listaaddvoid(
+    String nome, String imagem, num valor, ValueNotifier<int> notifier) {
   //adiciona infos a lista
-  list.add({'nome': nome, 'imagem': imagem, 'valor': valor, 'notifier': notifier});
+  list.add(
+      {'nome': nome, 'imagem': imagem, 'valor': valor, 'notifier': notifier});
 }
+
 void listadelvoid(int pos) {
   //deleta produtos da lista passando a posicao
   if (list.isNotEmpty) list.removeAt(pos);
 }
+
 void listaddcount(int pos, int value) {
   //passo a posicao e o valor e edito o valor do notifier passado
   list[pos]['notifier'].value = value;
@@ -43,4 +47,26 @@ void listAddLoginVoid(String email, String senha) {
   listLogin.add({'email': email, 'senha': senha});
 }
 
+List listCadastro = [];
+void listAddCadastroVoid(String nome, String sobrenome, String dataNascimento,
+    String celular, String email, String cpf, String novaSenha) {
+  //adiciona infos a lista
+  listCadastro.add({
+    'nome': nome,
+    'sobrenome': sobrenome,
+    'dataNascimento': dataNascimento,
+    'celular': celular,
+    'email': email,
+    'cpf': cpf,
+    'novaSenha': novaSenha
+  });
+}
 
+final nome = TextEditingController();
+final sobrenome = TextEditingController();
+final nascimento = TextEditingController();
+final celular = TextEditingController();
+final email = TextEditingController();
+final cpf = TextEditingController();
+final novasenha = TextEditingController();
+final box = ValueNotifier<bool>(false);

@@ -3,6 +3,7 @@ import 'package:flutter_cep/screens/cadastre_se.dart';
 
 class Login extends StatelessWidget {
   final obscureText = ValueNotifier<bool>(true);
+  final formKey = GlobalKey<FormState>();
   Login({super.key});
 
   createAlertDialog(BuildContext context) {
@@ -86,162 +87,170 @@ class Login extends StatelessWidget {
         title: const Text('Login'),
         centerTitle: false,
       ),
-      body: Stack(
-        children: [
-          Column(
+      body: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Stack(
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(
-                      Icons.email_outlined,
-                      size: 40,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(
-                      height: 25,
-                      width: size.width / 1.3,
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.teal)),
-                          enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black)),
-                          hintText: 'email',
-                          hintStyle: TextStyle(fontSize: 18, height: 0.2),
+              Column(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Icon(
+                          Icons.email_outlined,
+                          size: 40,
+                          color: Colors.teal,
                         ),
-                        cursorColor: Colors.teal,
-                        // controller: nomeCartao,
-                        keyboardType: TextInputType.emailAddress,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(
-                      Icons.lock_outline,
-                      size: 40,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(
-                      height: 25,
-                      width: size.width / 1.3,
-                      child: ValueListenableBuilder(
-                        valueListenable: obscureText,
-                        builder: (context, value, child) {
-                          return TextFormField(
-                            decoration: InputDecoration(
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.teal)),
-                                enabledBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                hintText: 'senha',
-                                hintStyle:
-                                    const TextStyle(fontSize: 18, height: 0.2),
-                                suffixIcon: value == false
-                                    ? GestureDetector(
-                                      child: const Icon(
-                                          Icons.visibility,
-                                          size: 25,
-                                          color: Colors.teal,
-                                        ),
-                                        onTap: () {
-                                          obscureText.value = true;
-                                        },
-                                    )
-                                    : GestureDetector(
-                                      child: const Icon(
-                                          Icons.visibility_off,
-                                          size: 25,
-                                          color: Colors.teal,
-                                        ),
-                                        onTap: () {
-                                          obscureText.value = false;
-                                        },
-                                    )),
+                        SizedBox(
+                          height: 25,
+                          width: size.width / 1.3,
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.teal)),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black)),
+                              hintText: 'email',
+                              hintStyle: TextStyle(fontSize: 18, height: 0.2),
+                            ),
                             cursorColor: Colors.teal,
                             // controller: nomeCartao,
-                            keyboardType: TextInputType.text,
+                            keyboardType: TextInputType.emailAddress,
                             style: const TextStyle(fontSize: 18),
-                            obscureText: obscureText.value,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Icon(
+                          Icons.lock_outline,
+                          size: 40,
+                          color: Colors.teal,
+                        ),
+                        SizedBox(
+                          height: 25,
+                          width: size.width / 1.3,
+                          child: ValueListenableBuilder(
+                            valueListenable: obscureText,
+                            builder: (context, value, child) {
+                              return TextFormField(
+                                decoration: InputDecoration(
+                                    focusedBorder: const UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.teal)),
+                                    enabledBorder: const UnderlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.black)),
+                                    hintText: 'senha',
+                                    hintStyle:
+                                        const TextStyle(fontSize: 18, height: 0.2),
+                                    suffixIcon: value == false
+                                        ? GestureDetector(
+                                          child: const Icon(
+                                              Icons.visibility,
+                                              size: 25,
+                                              color: Colors.teal,
+                                            ),
+                                            onTap: () {
+                                              obscureText.value = true;
+                                            },
+                                        )
+                                        : GestureDetector(
+                                          child: const Icon(
+                                              Icons.visibility_off,
+                                              size: 25,
+                                              color: Colors.teal,
+                                            ),
+                                            onTap: () {
+                                              obscureText.value = false;
+                                            },
+                                        )),
+                                cursorColor: Colors.teal,
+                                // controller: nomeCartao,
+                                keyboardType: TextInputType.text,
+                                style: const TextStyle(fontSize: 18),
+                                obscureText: obscureText.value,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 50, left: 80, right: 80),
+                      child: Container(
+                        height: 50,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color.fromARGB(255, 124, 124, 124),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'ENTRAR',
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // onTap: () {},
+                  ),
+                  GestureDetector(
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
+                      child: Container(
+                        height: 50,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 6, 122, 9)),
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.white,
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'CADASTRE-SE',
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Cadastrese()),
                           );
-                        },
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: GestureDetector(
+                      child: const Text(
+                        'Esqueci a senha!',
+                        style: TextStyle(fontSize: 16),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 50, left: 80, right: 80),
-                  child: Container(
-                    height: 50,
-                    width: size.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: const Color.fromARGB(255, 124, 124, 124),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'ENTRAR',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
+                      onTap: () {
+                        createAlertDialog(context);
+                      },
                     ),
                   ),
-                ),
-                // onTap: () {},
-              ),
-              GestureDetector(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
-                  child: Container(
-                    height: 50,
-                    width: size.width,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 6, 122, 9)),
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.white,
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'CADASTRE-SE',
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                    ),
-                  ),
-                ),
-                onTap: () {
-                  Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Cadastrese()),
-                      );
-                },
-              ),
-              GestureDetector(
-                child: const Text(
-                  'Esqueci a senha!',
-                  style: TextStyle(fontSize: 16),
-                ),
-                onTap: () {
-                  createAlertDialog(context);
-                },
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
