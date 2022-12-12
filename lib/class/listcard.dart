@@ -70,3 +70,12 @@ final email = TextEditingController();
 final cpf = TextEditingController();
 final novasenha = TextEditingController();
 final box = ValueNotifier<bool>(false);
+
+final cadastrar = ValueNotifier<bool>(nome.value.text.isNotEmpty &&
+    sobrenome.value.text.isNotEmpty &&
+    nascimento.value.text.isNotEmpty &&
+    celular.value.text.isNotEmpty &&
+    email.value.text.isNotEmpty &&
+    cpf.value.text.isNotEmpty &&
+    novasenha.value.text.isNotEmpty &&
+    box.value == true);

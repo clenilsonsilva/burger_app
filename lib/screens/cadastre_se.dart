@@ -340,7 +340,8 @@ class Cadastrese extends StatelessWidget {
                         ? SizedBox(
                             width: size.width,
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
+                              padding: const EdgeInsets.only(
+                                  left: 20, top: 10, bottom: 20),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -355,6 +356,7 @@ class Cadastrese extends StatelessWidget {
                                           ),
                                           onTap: () {
                                             box.value = false;
+                                            cadastrar.value = true;
                                           },
                                         );
                                       } else {
@@ -365,6 +367,9 @@ class Cadastrese extends StatelessWidget {
                                           ),
                                           onTap: () {
                                             box.value = true;
+                                            if(formKey.currentState!.validate()) {
+                                              cadastrar.value = true;
+                                            }
                                           },
                                         );
                                       }
@@ -384,22 +389,28 @@ class Cadastrese extends StatelessWidget {
                             ),
                           )
                         : const SizedBox(),
-                    GestureDetector(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 50),
-                        height: 40,
-                        width: size.width / 2,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.teal),
-                        child: const Center(
-                          child: Text(
-                            'CONFIRMAR',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                    ValueListenableBuilder(
+                      valueListenable: cadastrar,
+                      builder: (context, value, child) {
+                        return GestureDetector(
+                          onTap: value==false ? null : () {print('ok');},
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 50),
+                            height: 40,
+                            width: size.width / 2,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: value==false ? Colors.grey : Colors.teal),
+                            child: const Center(
+                              child: Text(
+                                'CONFIRMAR',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      // onTap: () {},
+                        );
+                      },
                     )
                   ],
                 )
