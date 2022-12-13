@@ -153,7 +153,9 @@ class Cadastrese extends StatelessWidget {
                                 DataInputFormatter(),
                               ],
                               validator: (value) {
-                                if (value!.isEmpty || !data(value) || GetUtils.isDateTime(value)) {
+                                if (value!.isEmpty ||
+                                    !data(value) ||
+                                    GetUtils.isDateTime(value)) {
                                   return 'Data de Nascimento Invalida';
                                 } else {
                                   return null;
@@ -206,7 +208,9 @@ class Cadastrese extends StatelessWidget {
                                 TelefoneInputFormatter(),
                               ],
                               validator: (value) {
-                                if (value!.isEmpty || value.length != 15 || !GetUtils.isPhoneNumber(value)) {
+                                if (value!.isEmpty ||
+                                    value.length != 15 ||
+                                    !GetUtils.isPhoneNumber(value)) {
                                   return 'Numero Invalido';
                                 } else {
                                   return null;
@@ -279,32 +283,30 @@ class Cadastrese extends StatelessWidget {
                             height: 40,
                             width: size.width / 1.2,
                             child: TextFormField(
-                                decoration: const InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.teal)),
-                                  enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.black)),
-                                  hintText: 'Cpf',
-                                  hintStyle:
-                                      TextStyle(fontSize: 18, height: 0.1),
-                                ),
-                                controller: cpf,
-                                keyboardType: TextInputType.number,
-                                style: const TextStyle(fontSize: 18),
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
-                                  CpfInputFormatter(),
-                                ],
-                                validator: (value) {
-                                  if (value!.isEmpty || !GetUtils.isCpf(value)) {
-                                    return 'Cpf invalido';
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                ),
+                              decoration: const InputDecoration(
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.teal)),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.black)),
+                                hintText: 'Cpf',
+                                hintStyle: TextStyle(fontSize: 18, height: 0.1),
+                              ),
+                              controller: cpf,
+                              keyboardType: TextInputType.number,
+                              style: const TextStyle(fontSize: 18),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                CpfInputFormatter(),
+                              ],
+                              validator: (value) {
+                                if (value!.isEmpty || !GetUtils.isCpf(value)) {
+                                  return 'Cpf invalido';
+                                } else {
+                                  return null;
+                                }
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -365,12 +367,12 @@ class Cadastrese extends StatelessWidget {
                                   style: const TextStyle(fontSize: 18),
                                   obscureText: obscureText.value,
                                   validator: (value) {
-                                  if (value!.isEmpty || !GetUtils.isPassport(value)) {
-                                    return 'senha invalido';
-                                  } else {
-                                    return null;
-                                  }
-                                },
+                                    if (value!.isEmpty || value.length < 5) {
+                                      return 'senha invalido';
+                                    } else {
+                                      return null;
+                                    }
+                                  },
                                 );
                               },
                             ),
@@ -398,6 +400,7 @@ class Cadastrese extends StatelessWidget {
                                           ),
                                           onTap: () {
                                             box.value = false;
+                                            // print(listCadastroReturn()[0]['cpf']);
                                           },
                                         );
                                       } else {
@@ -408,6 +411,7 @@ class Cadastrese extends StatelessWidget {
                                           ),
                                           onTap: () {
                                             box.value = true;
+                                            // print(listCadastroReturn()[0]['cpf']);
                                           },
                                         );
                                       }
@@ -435,7 +439,39 @@ class Cadastrese extends StatelessWidget {
                               ? null
                               : () {
                                   formKey.currentState!.validate();
-                                  print(celular.text.length);
+                                  if (formKey.currentState!.validate()) {
+                                    if (listCadastroReturn().isEmpty) {
+                                      listAddCadastroVoid(
+                                          nome.value.text,
+                                          sobrenome.value.text,
+                                          nascimento.value.text,
+                                          celular.value.text,
+                                          email.value.text,
+                                          cpf.value.text,
+                                          novasenha.value.text);
+                                          Navigator.pop(context);
+                                    } else {
+                                      for (var i = 0;
+                                          i < listEmailReturn().length;
+                                          i++) {
+                                        if (!listEmailReturn()
+                                            .contains(email.value.text)) {
+                                          listAddCadastroVoid(
+                                              nome.value.text,
+                                              sobrenome.value.text,
+                                              nascimento.value.text,
+                                              celular.value.text,
+                                              email.value.text,
+                                              cpf.value.text,
+                                              novasenha.value.text);
+                                              Navigator.pop(context); 
+                                        }
+                                      }
+                                    }
+                                  }
+                                  // for (var i = 0; i < listEmailReturn().length; i++) {
+                                  //   print(listCadastroReturn().length);
+                                  // }
                                 },
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 50),

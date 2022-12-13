@@ -32,6 +32,7 @@ final currentselecteditemhome = ValueNotifier<int>(0);
 final listreturnotifier = ValueNotifier<int>(listreturn().length);
 //tab do drawer my account
 final tabcadastro = ValueNotifier<int>(0);
+final cadastrado = ValueNotifier<bool>(false);
 
 //retorna o subtotal dos produtos do carrinho
 num total() {
@@ -49,7 +50,17 @@ void listAddLoginVoid(String email, String senha) {
   listLogin.add({'email': email, 'senha': senha});
 }
 
-List listCadastro = [];
+List listCadastro = [
+  {
+    'nome': 'clenilson',
+    'sobrenome': 'silva',
+    'dataNascimento': '23/04/2001',
+    'celular': '(93) 98807-8248',
+    'email': 'clenilson@gmail.com',
+    'cpf' : '037.341.092-13',
+    'novaSenha' : '123456'
+  }
+];
 void listAddCadastroVoid(String nome, String sobrenome, String dataNascimento,
     String celular, String email, String cpf, String novaSenha) {
   //adiciona infos a lista
@@ -64,6 +75,18 @@ void listAddCadastroVoid(String nome, String sobrenome, String dataNascimento,
   });
 }
 
+List listCadastroReturn() {
+  return listCadastro;
+}
+
+List listEmailReturn() {
+  List emaill = [];
+  for (var i = 0; i < listCadastroReturn().length; i++) {
+    emaill.add(listCadastroReturn()[i]['email']);
+  }
+  return emaill;
+}
+
 final nome = TextEditingController();
 final sobrenome = TextEditingController();
 final nascimento = TextEditingController();
@@ -73,18 +96,17 @@ final cpf = TextEditingController();
 final novasenha = TextEditingController();
 final box = ValueNotifier<bool>(false);
 
-
 final ativar = Activator(listc: [
-    nome,
-    sobrenome,
-    nascimento,
-    celular,
-    email,
-    cpf,
-    novasenha,
-  ], list: [box]);
-
-final confirmar = ValueNotifier<bool>(ativar.value==true && box.value==true);
+  nome,
+  sobrenome,
+  nascimento,
+  celular,
+  email,
+  cpf,
+  novasenha,
+], list: [
+  box
+]);
 
 bool data(String valor) {
   valor = valor.replaceAll('/', '');
@@ -97,18 +119,42 @@ bool data(String valor) {
         (int.parse(b[0]) * 10 + int.parse(b[1])) <= 30;
     somam = (int.parse(b[2]) * 10 + int.parse(b[3])) > 0 &&
         (int.parse(b[2]) * 10 + int.parse(b[3])) <= 12;
-    soma = int.parse([b[4],b[5],b[6],b[7]].join('').toString());
-    somaa = soma>1902;
+    soma = int.parse([b[4], b[5], b[6], b[7]].join('').toString());
+    somaa = soma > 1902;
   } else if (b.length == 7) {
     somad = int.parse(b[0]) > 0;
     somam = (int.parse(b[1]) * 10 + int.parse(b[2])) > 0 &&
         (int.parse(b[2]) * 10 + int.parse(b[2])) <= 12;
-    soma = int.parse([b[3],b[4],b[5],b[6]].join('').toString());
-    somaa = soma>1902;
+    soma = int.parse([b[3], b[4], b[5], b[6]].join('').toString());
+    somaa = soma > 1902;
   } else {
     return false;
   }
   return somad == true && somam == true && somaa == true;
 }
 
+bool checkEmail(String valor) {
+  if (listEmailReturn().isNotEmpty) {
+    if (listEmailReturn().contains(valor)) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
 
+bool checkLogin(String emaill, String senha) {
+  if (listEmailReturn().isNotEmpty) {
+    for (var i = 0; i < listCadastroReturn().length; i++) {
+      if (emaill == (listCadastroReturn()[i]['email']) &&
+          senha == (listCadastroReturn()[i]['novaSenha'])) {
+        return true;
+      }
+    }
+    return false;
+  } else {
+    return false;
+  }
+}
