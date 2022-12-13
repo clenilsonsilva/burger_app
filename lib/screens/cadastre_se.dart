@@ -1,6 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 import '../class/listcard.dart';
 
@@ -76,7 +77,8 @@ class Cadastrese extends StatelessWidget {
                               style: const TextStyle(fontSize: 18),
                               validator: (value) {
                                 if (value!.isEmpty ||
-                                    !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                                    !RegExp(r'^[a-z A-Z]+$').hasMatch(value) ||
+                                    value.length < 3) {
                                   return 'Nome invalido';
                                 } else {
                                   return null;
@@ -103,7 +105,8 @@ class Cadastrese extends StatelessWidget {
                               style: const TextStyle(fontSize: 18),
                               validator: (value) {
                                 if (value!.isEmpty ||
-                                    !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                                    !RegExp(r'^[a-z A-Z]+$').hasMatch(value) ||
+                                    value.length < 3) {
                                   return 'SobreNome invalido';
                                 } else {
                                   return null;
@@ -149,6 +152,13 @@ class Cadastrese extends StatelessWidget {
                                 FilteringTextInputFormatter.digitsOnly,
                                 DataInputFormatter(),
                               ],
+                              validator: (value) {
+                                if (value!.isEmpty || !data(value) || GetUtils.isDateTime(value)) {
+                                  return 'Data de Nascimento Invalida';
+                                } else {
+                                  return null;
+                                }
+                              },
                             ),
                           ),
                         ],
@@ -195,6 +205,13 @@ class Cadastrese extends StatelessWidget {
                                 FilteringTextInputFormatter.digitsOnly,
                                 TelefoneInputFormatter(),
                               ],
+                              validator: (value) {
+                                if (value!.isEmpty || value.length != 15 || !GetUtils.isPhoneNumber(value)) {
+                                  return 'Numero Invalido';
+                                } else {
+                                  return null;
+                                }
+                              },
                             ),
                           ),
                         ],
@@ -218,19 +235,28 @@ class Cadastrese extends StatelessWidget {
                             height: 40,
                             width: size.width / 1.2,
                             child: TextFormField(
-                              decoration: const InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.teal)),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                hintText: 'Email',
-                                hintStyle: TextStyle(fontSize: 18, height: 0.1),
-                              ),
-                              controller: email,
-                              keyboardType: TextInputType.emailAddress,
-                              style: const TextStyle(fontSize: 18),
-                            ),
+                                decoration: const InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.teal)),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.black)),
+                                  hintText: 'Email',
+                                  hintStyle:
+                                      TextStyle(fontSize: 18, height: 0.1),
+                                ),
+                                controller: email,
+                                keyboardType: TextInputType.emailAddress,
+                                style: const TextStyle(fontSize: 18),
+                                validator: (value) {
+                                  if (value!.isEmpty ||
+                                      !GetUtils.isEmail(value)) {
+                                    return 'Email invalido';
+                                  } else {
+                                    return null;
+                                  }
+                                }),
                           ),
                         ],
                       ),
@@ -253,23 +279,32 @@ class Cadastrese extends StatelessWidget {
                             height: 40,
                             width: size.width / 1.2,
                             child: TextFormField(
-                              decoration: const InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.teal)),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                hintText: 'Cpf',
-                                hintStyle: TextStyle(fontSize: 18, height: 0.1),
-                              ),
-                              controller: cpf,
-                              keyboardType: TextInputType.number,
-                              style: const TextStyle(fontSize: 18),
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly,
-                                CpfInputFormatter(),
-                              ],
-                            ),
+                                decoration: const InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.teal)),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.black)),
+                                  hintText: 'Cpf',
+                                  hintStyle:
+                                      TextStyle(fontSize: 18, height: 0.1),
+                                ),
+                                controller: cpf,
+                                keyboardType: TextInputType.number,
+                                style: const TextStyle(fontSize: 18),
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly,
+                                  CpfInputFormatter(),
+                                ],
+                                validator: (value) {
+                                  if (value!.isEmpty || !GetUtils.isCpf(value)) {
+                                    return 'Cpf invalido';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                ),
                           ),
                         ],
                       ),
@@ -329,6 +364,13 @@ class Cadastrese extends StatelessWidget {
                                   // keyboardType: TextInputType.text,
                                   style: const TextStyle(fontSize: 18),
                                   obscureText: obscureText.value,
+                                  validator: (value) {
+                                  if (value!.isEmpty || !GetUtils.isPassport(value)) {
+                                    return 'senha invalido';
+                                  } else {
+                                    return null;
+                                  }
+                                },
                                 );
                               },
                             ),
@@ -356,7 +398,6 @@ class Cadastrese extends StatelessWidget {
                                           ),
                                           onTap: () {
                                             box.value = false;
-                                            cadastrar.value = true;
                                           },
                                         );
                                       } else {
@@ -367,9 +408,6 @@ class Cadastrese extends StatelessWidget {
                                           ),
                                           onTap: () {
                                             box.value = true;
-                                            if(formKey.currentState!.validate()) {
-                                              cadastrar.value = true;
-                                            }
                                           },
                                         );
                                       }
@@ -390,17 +428,23 @@ class Cadastrese extends StatelessWidget {
                           )
                         : const SizedBox(),
                     ValueListenableBuilder(
-                      valueListenable: cadastrar,
+                      valueListenable: ativar,
                       builder: (context, value, child) {
                         return GestureDetector(
-                          onTap: value==false ? null : () {print('ok');},
+                          onTap: value == false
+                              ? null
+                              : () {
+                                  formKey.currentState!.validate();
+                                  print(celular.text.length);
+                                },
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 50),
                             height: 40,
                             width: size.width / 2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: value==false ? Colors.grey : Colors.teal),
+                                color:
+                                    value == false ? Colors.grey : Colors.teal),
                             child: const Center(
                               child: Text(
                                 'CONFIRMAR',

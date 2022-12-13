@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'notifier.dart';
+
 //List tem as informacoes dos produtos adicionados ao carrinho
 List list = [];
 void listaaddvoid(
@@ -71,11 +73,42 @@ final cpf = TextEditingController();
 final novasenha = TextEditingController();
 final box = ValueNotifier<bool>(false);
 
-final cadastrar = ValueNotifier<bool>(nome.value.text.isNotEmpty &&
-    sobrenome.value.text.isNotEmpty &&
-    nascimento.value.text.isNotEmpty &&
-    celular.value.text.isNotEmpty &&
-    email.value.text.isNotEmpty &&
-    cpf.value.text.isNotEmpty &&
-    novasenha.value.text.isNotEmpty &&
-    box.value == true);
+
+final ativar = Activator(listc: [
+    nome,
+    sobrenome,
+    nascimento,
+    celular,
+    email,
+    cpf,
+    novasenha,
+  ], list: [box]);
+
+final confirmar = ValueNotifier<bool>(ativar.value==true && box.value==true);
+
+bool data(String valor) {
+  valor = valor.replaceAll('/', '');
+  num a = num.parse(valor);
+  String b = a.toString();
+  bool somam = false, somad = false, somaa = false;
+  int soma = 0;
+  if (b.length == 8) {
+    somad = (int.parse(b[0]) * 10 + int.parse(b[1])) > 0 &&
+        (int.parse(b[0]) * 10 + int.parse(b[1])) <= 30;
+    somam = (int.parse(b[2]) * 10 + int.parse(b[3])) > 0 &&
+        (int.parse(b[2]) * 10 + int.parse(b[3])) <= 12;
+    soma = int.parse([b[4],b[5],b[6],b[7]].join('').toString());
+    somaa = soma>1902;
+  } else if (b.length == 7) {
+    somad = int.parse(b[0]) > 0;
+    somam = (int.parse(b[1]) * 10 + int.parse(b[2])) > 0 &&
+        (int.parse(b[2]) * 10 + int.parse(b[2])) <= 12;
+    soma = int.parse([b[3],b[4],b[5],b[6]].join('').toString());
+    somaa = soma>1902;
+  } else {
+    return false;
+  }
+  return somad == true && somam == true && somaa == true;
+}
+
+
