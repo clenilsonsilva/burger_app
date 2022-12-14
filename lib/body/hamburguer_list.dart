@@ -78,25 +78,18 @@ class HamburgueList extends StatelessWidget {
                             ),
                             const Spacer(),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Spacer(),
-                                Text(
-                                  //valor do produto
-                                  'R\$ ${map['valor']},00',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const Spacer(),
-                                SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: Text(
+                                    //valor do produto
+                                    'R\$ ${map['valor']},00',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
                                     ),
-                                    child: const Icon(Icons.add),
                                   ),
                                 ),
                               ],

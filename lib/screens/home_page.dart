@@ -8,6 +8,7 @@ import '../widgets/DrawerWidget.dart';
 import 'shippin_page.dart';
 
 class HomePage extends StatelessWidget {
+  //Pagina inicial
   const HomePage({super.key});
 
   @override
@@ -26,21 +27,64 @@ class HomePage extends StatelessWidget {
           ValueListenableBuilder(
             /*currentselecteditemhome e um valuenotifier localizado em listcard (local externo)
             e escuta as mudancas feitas nas categorias*/
-            valueListenable: currentselecteditemhome, 
+            valueListenable: currentselecteditemhome,
             builder: (context, value, child) {
               return CustomScrollView(
                 scrollDirection: Axis.vertical,
                 slivers: [
-                  const Header(),
-                  Categories(),
+                  const Header(), //Container Verde
+                  Categories(), //Tabs para selecionar os items
                   HamburgueList(
-                    map_0: listcategories(currentselecteditemhome.value)[0],
-                    map_1: listcategories(currentselecteditemhome.value)[1],
+                    //current seleciona a lista a ser mostrada e a posicao seleciona o item da lista a ser selecionado
+                    map_0: listcategories(
+                        currentselecteditemhome.value)[0], 
+                    map_1: listcategories(
+                        currentselecteditemhome.value)[1], 
                   ),
+
                   HamburgueList(
-                    map_0: listcategories(currentselecteditemhome.value)[2],
-                    map_1: listcategories(currentselecteditemhome.value)[3],
+                    map_0: listcategories(
+                        currentselecteditemhome.value)[2], 
+                    map_1: listcategories(
+                        currentselecteditemhome.value)[3], 
                   ),
+
+                  currentselecteditemhome.value == 0 ||currentselecteditemhome.value==1 ||currentselecteditemhome.value==2
+                      ? HamburgueList(
+                          map_0: listcategories(
+                              currentselecteditemhome.value)[4], //lista pizza
+                          map_1: listcategories(
+                              currentselecteditemhome.value)[5], //lista hotdog
+                        )
+                      : const SliverToBoxAdapter(),
+
+                  currentselecteditemhome.value == 0 || currentselecteditemhome.value==1 || currentselecteditemhome.value==2
+                      ? HamburgueList(
+                          map_0: listcategories(
+                              currentselecteditemhome.value)[6], //lista pizza
+                          map_1: listcategories(
+                              currentselecteditemhome.value)[7], //lista hotdog
+                        )
+                      : const SliverToBoxAdapter(),
+
+                  currentselecteditemhome.value == 1
+                      ? HamburgueList(
+                          map_0: listcategories(
+                              currentselecteditemhome.value)[8], //lista pizza
+                          map_1: listcategories(
+                              currentselecteditemhome.value)[9], //lista hotdog
+                        )
+                      : const SliverToBoxAdapter(),
+
+                  currentselecteditemhome.value == 1
+                      ? HamburgueList(
+                          map_0: listcategories(
+                              currentselecteditemhome.value)[10], //lista pizza
+                          map_1: listcategories(
+                              currentselecteditemhome.value)[11], //lista hotdog
+                        )
+                      : const SliverToBoxAdapter(),
+
                 ],
               );
             },

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_cep/my_icons.dart';
 import '../class/listcard.dart';
 
 class Categories extends StatelessWidget {
   /* classe que controla as categorias*/
-  final List lista = ['Burger', 'Drink', 'Pizza', 'Hot Dog'];
+  final List lista = ['Burger', 'Drink', 'Pizza', 'Hot Dog', 'Acai', 'Marmitex'];
+  final List listaIcon  = [MyIcons.hamburger ,MyIcons.beer, Icons.local_pizza, MyIcons.foodhotdog, Icons.fastfood, Icons.food_bank];
   Categories({super.key});
 
   @override
@@ -47,7 +48,7 @@ class Categories extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25),
                           ),
                           child: Icon(
-                            Icons.fastfood,
+                            listaIcon[index],
                             color: index == currentselecteditemhome.value
                                 ? Colors.white
                                 : Colors.black.withOpacity(0.7),

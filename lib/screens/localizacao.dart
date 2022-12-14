@@ -122,6 +122,7 @@ class Localizacao extends StatelessWidget {
                                         )),
                               );
                             }
+
                           }
                         : null,
                     child: Container(

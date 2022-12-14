@@ -35,6 +35,8 @@ dependencies:
   brasil_fields: 1.8.0
   get: ^4.6.5
   http: ^0.13.5
+  font_awesome_flutter: ^10.3.0
+  community_material_icon: ^5.9.55
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -84,7 +86,31 @@ flutter:
     - images/fanta2l.png
     - images/guarana2l.png
     - images/kuat2l.png
+    - images/cocalata.png
+    - images/fantalata.png
+    - images/guaranalata.png
+    - images/pepsilata.png
     - images/creditcard.png
+    - images/monsterlata.png
+    - images/redbulllata.png
+    - images/whopper.png
+    - images/megastackeratomico.png
+    - images/bigking.png
+    - images/whopperplantas.png
+    - images/acai0.png
+    - images/acai1.png
+    - images/acai2.png
+    - images/acai3.png
+    - images/bistecabovinamarmita.png
+    - images/carneassadamarmita.png
+    - images/frangomarmita.png
+    - images/lasanhamarmita.png
+    - images/water.png
+    - images/aguacoco.png
+    - images/cheesepizza.png
+    - images/queijoetomatepizza.png
+    - images/peperonipizza.png
+    - images/pimentapizza.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -97,10 +123,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: MyIcons
+      fonts:
+        - asset: assets/MyIcons.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

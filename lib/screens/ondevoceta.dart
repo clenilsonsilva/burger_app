@@ -39,7 +39,7 @@ class OndeVoceTa extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text('$cidade, $uf, $bairro, $logradouro'),
+                  Text('$cidade, $uf, $bairro, $logradouro', style: const TextStyle(fontSize: 25, color: Colors.black)),
                 ],
               )
             ],

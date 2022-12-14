@@ -34,6 +34,7 @@ class BodyDesc extends StatelessWidget {
                           children: [
                             //ratingbar pacote do pub.dev que permite meia estrela
                             RatingBar(
+                              ignoreGestures: true,
                               itemSize: size.width / 20,
                               initialRating: map['rating'],
                               direction: Axis.horizontal,
