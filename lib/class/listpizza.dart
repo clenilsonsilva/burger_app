@@ -9,8 +9,8 @@ Map pizzacalabresa() {
   'row': 1,
   'width': 150.0,
   'height': 140.0,
-  'left': 0.0,
-  'top': 40.0,};
+  'left': -45.0,
+  'top': 44.0,};
 }
 
 Map pizzaitaliana() {
@@ -23,8 +23,8 @@ Map pizzaitaliana() {
   'row': 1,
   'width': 150.0,
   'height': 150.0,
-  'left': 0.0,
-  'top': 35.0,};
+  'left': -45.0,
+  'top': 39.0,};
 }
 
 Map pizzamarguerita() {
@@ -37,8 +37,8 @@ Map pizzamarguerita() {
   'row': 1,
   'width': 150.0,
   'height': 150.0,
-  'left': 0.0,
-  'top': 35.0,};
+  'left': -45.0,
+  'top': 40.0,};
 }
 
 Map pizzawing() {
@@ -49,10 +49,10 @@ Map pizzawing() {
   'rating': 4.5,
   'images': 'images/pizzawing.png',
   'row': 1,
-  'width': 150.0,
-  'height': 150.0,
-  'left': 5.0,
-  'top': 40.0,};
+  'width': 120.0,
+  'height': 120.0,
+  'left': -20.0,
+  'top': 55.0,};
 }
 
 Map cheesepizza() {
@@ -63,10 +63,10 @@ Map cheesepizza() {
   'rating': 4.7,
   'images': 'images/cheesepizza.png',
   'row': 1,
-  'width': 150.0,
-  'height': 140.0,
-  'left': 0.0,
-  'top': 40.0,};
+  'width': 110.0,
+  'height': 110.0,
+  'left': -15.0,
+  'top': 60.0,};
 }
 
 Map pizzaqueijotomate() {
@@ -79,8 +79,8 @@ Map pizzaqueijotomate() {
   'row': 1,
   'width': 150.0,
   'height': 150.0,
-  'left': 0.0,
-  'top': 35.0,};
+  'left': -40.0,
+  'top': 40.0,};
 }
 
 Map peperonipizza() {
@@ -91,10 +91,10 @@ Map peperonipizza() {
   'rating': 4.5,
   'images': 'images/peperonipizza.png',
   'row': 1,
-  'width': 150.0,
-  'height': 150.0,
-  'left': 0.0,
-  'top': 35.0,};
+  'width': 110.0,
+  'height': 110.0,
+  'left': -15.0,
+  'top': 60.0,};
 }
 
 Map pimentapizza() {
@@ -105,8 +105,8 @@ Map pimentapizza() {
   'rating': 4.5,
   'images': 'images/pimentapizza.png',
   'row': 1,
-  'width': 150.0,
-  'height': 150.0,
-  'left': 5.0,
-  'top': 40.0,};
+  'width': 120.0,
+  'height': 120.0,
+  'left': -18.0,
+  'top': 55.0,};
 }

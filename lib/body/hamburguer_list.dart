@@ -104,6 +104,7 @@ class HamburgueList extends StatelessWidget {
                   //posicao do produto, caso o produto esteja desalinhado mudar as variaveis no map do produto
                   top: map['top'],
                   left: map['left'],
+                  right: map.containsKey('right') ? map['right'] : 0,
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(

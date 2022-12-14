@@ -4,8 +4,8 @@ import '../class/listcard.dart';
 
 class Categories extends StatelessWidget {
   /* classe que controla as categorias*/
-  final List lista = ['Burger', 'Drink', 'Pizza', 'Hot Dog', 'Acai', 'Marmitex'];
-  final List listaIcon  = [MyIcons.hamburger ,MyIcons.beer, Icons.local_pizza, MyIcons.foodhotdog, Icons.fastfood, Icons.food_bank];
+  final List lista = ['Burger', 'Drink', 'Pizza', 'Hot Dog', 'Acai', 'Marmitex', 'Combos'];
+  final List listaIcon  = [MyIcons.hamburger ,MyIcons.beer, Icons.local_pizza, MyIcons.foodhotdog, Icons.local_drink, Icons.food_bank, Icons.fastfood];
   Categories({super.key});
 
   @override

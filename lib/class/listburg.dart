@@ -22,10 +22,10 @@ Map baconburger() {
   'rating': 5.0,
   'images': 'images/bacon.png',
   'row': 1,
-  'width': 170.0,
-  'height': 170.0,
-  'left': -10.0,
-  'top': 25.0,};
+  'width': 140.0,
+  'height': 120.0,
+  'left': -30.0,
+  'top': 60.0,};
 }
 
 Map cheeseburger() {
@@ -38,7 +38,7 @@ Map cheeseburger() {
   'row': 1,
   'width': 170.0,
   'height': 170.0,
-  'left': -15.0,
+  'left': -40.0,
   'top': 30.0,};
 }
 
@@ -52,7 +52,7 @@ Map veggibuger() {
   'row': 1,
   'width': 150.0,
   'height': 160.0,
-  'left': -10.0,
+  'left': -40.0,
   'top': 30.0,};
 }
 
@@ -64,10 +64,10 @@ Map whopperburger() {
   'rating': 4.5,
   'images': 'images/whopper.png',
   'row': 1,
-  'width': 150.0,
-  'height': 160.0,
-  'left': -10.0,
-  'top': 30.0,};
+  'width': 210.0,
+  'height': 210.0,
+  'left': -30.0,
+  'top': 10.0,};
 }
 
 Map bigking() {
@@ -78,9 +78,9 @@ Map bigking() {
   'rating': 4.5,
   'images': 'images/bigking.png',
   'row': 1,
-  'width': 150.0,
-  'height': 160.0,
-  'left': -10.0,
+  'width': 160.0,
+  'height': 170.0,
+  'left': -30.0,
   'top': 30.0,};
 }
 
@@ -92,10 +92,10 @@ Map megastacker() {
   'rating': 4.9,
   'images': 'images/megastackeratomico.png',
   'row': 1,
-  'width': 150.0,
-  'height': 160.0,
-  'left': -10.0,
-  'top': 30.0,};
+  'width': 200.0,
+  'height': 200.0,
+  'left': -35.0,
+  'top': 5.0,};
 }
 
 Map whopperplantas() {
@@ -108,6 +108,6 @@ Map whopperplantas() {
   'row': 1,
   'width': 150.0,
   'height': 160.0,
-  'left': -10.0,
-  'top': 30.0,};
+  'left': -15.0,
+  'top': 40.0,};
 }

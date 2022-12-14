@@ -1,4 +1,5 @@
 import 'package:flutter_cep/class/listacai.dart';
+import 'package:flutter_cep/class/listcombos.dart';
 import 'package:flutter_cep/class/listmarmita.dart';
 
 import 'listburg.dart';
@@ -55,6 +56,13 @@ List listcategories(int pos) {
       marmitabisteca(),
       marmitalasanha(),
       marmitafrango()
+    ];
+  } else if (pos == 6) {
+    return [
+      comboburgerfritacoca(),
+      combonuggetsfritas(),
+      batatahotdog(),
+      porcaobatatabaconcheddar()
     ];
   } else {
     return [];
