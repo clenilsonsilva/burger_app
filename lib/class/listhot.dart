@@ -7,9 +7,10 @@ Map hotdogtrad() {
   'rating': 4.5,
   'images': 'images/hotdog2.png',
   'row': 1,
-  'width': 150.0,
-  'height': 150.0,
-  'top': 45.0,};
+  'width': 130.0,
+  'height': 130.0,
+  'left': -35.0,
+  'top': 55.0,};
 }
 
 Map hotdogcatu() {
@@ -20,10 +21,10 @@ Map hotdogcatu() {
   'rating': 4.7,
   'images': 'images/hotdog1.png',
   'row': 1,
-  'width': 180.0,
-  'height': 180.0,
-  'left': -10.0,
-  'top': 40.0,};
+  'width': 200.0,
+  'height': 200.0,
+  'left': -20.0,
+  'top': 17.0,};
 }
 
 Map hotdogsuper() {
@@ -34,10 +35,10 @@ Map hotdogsuper() {
   'rating': 4.8,
   'images': 'images/hotdog0.png',
   'row': 1,
-  'width': 180.0,
-  'height': 180.0,
-  'left': -5.0,
-  'top': 30.0,};
+  'width': 190.0,
+  'height': 190.0,
+  'left': -15.0,
+  'top': 20.0,};
 }
 
 Map hotdogbacon() {
@@ -48,8 +49,8 @@ Map hotdogbacon() {
   'rating': 4.2,
   'images': 'images/hotdog3.png',
   'row': 1,
-  'width': 180.0,
-  'height': 180.0,
-  'left': -10.0,
-  'top': 45.0,};
+  'width': 200.0,
+  'height': 200.0,
+  'left': -18.0,
+  'top': 15.0,};
 }

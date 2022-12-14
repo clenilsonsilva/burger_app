@@ -47,9 +47,19 @@ List listcategories(int pos) {
       pimentapizza()
     ];
   } else if (pos == 3) {
-    return [hotdogtrad(), hotdogsuper(), hotdogbacon(), hotdogcatu()];
+    return [
+      hotdogtrad(),
+      hotdogsuper(),
+      hotdogbacon(),
+      hotdogcatu(),
+    ];
   } else if (pos == 4) {
-    return [acai(), acaiamendoim(), acaikiwi(), acaimorango()];
+    return [
+      acai(),
+      acaiamendoim(),
+      acaimorango(),
+      acaikiwi(),
+    ];
   } else if (pos == 5) {
     return [
       marmitacarneassada(),

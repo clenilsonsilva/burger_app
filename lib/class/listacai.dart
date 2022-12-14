@@ -7,10 +7,10 @@ Map acaikiwi() {
   'rating': 4.7,
   'images': 'images/acai3.png',
   'row': 1,
-  'width': 170.0,
-  'height': 160.0,
-  'left': 20.0,
-  'top': 35.0,};
+  'width': 200.0,
+  'height': 200.0,
+  'left': -50.0,
+  'top': 15.0,};
 }
 
 Map acaiamendoim() {
@@ -23,7 +23,8 @@ Map acaiamendoim() {
   'row': 1,
   'width': 170.0,
   'height': 140.0,
-  'left': 20.0,
+  'left': 4.0,
+  'right': 10.0,
   'top': 45.0,};
 }
 
@@ -37,7 +38,7 @@ Map acaimorango() {
   'row': 1,
   'width': 170.0,
   'height': 140.0,
-  'left': 20.0,
+  'left': -15.0,
   'top': 45.0,};
 }
 
@@ -49,8 +50,9 @@ Map acai() {
   'rating': 4.7,
   'images': 'images/acai0.png',
   'row': 1,
-  'width': 170.0,
-  'height': 140.0,
-  'left': 20.0,
+  'width': 150.0,
+  'height': 150.0,
+  'left': 0.0,
+  'right': -10.0,
   'top': 45.0,};
 }

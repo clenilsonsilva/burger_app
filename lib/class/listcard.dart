@@ -33,6 +33,11 @@ final listreturnotifier = ValueNotifier<int>(listreturn().length);
 //tab do drawer my account
 final tabcadastro = ValueNotifier<int>(0);
 final cadastrado = ValueNotifier<bool>(false);
+final nomeCartao = TextEditingController();
+final validade = TextEditingController();
+final numeroCartao = TextEditingController();
+final cvv = TextEditingController();
+final cpfCartao = TextEditingController();
 
 //retorna o subtotal dos produtos do carrinho
 num total() {
@@ -56,9 +61,9 @@ List listCadastro = [
     'sobrenome': 'silva',
     'dataNascimento': '23/04/2001',
     'celular': '(93) 98807-8248',
-    'email': 'clenilson@gmail.com',
-    'cpf' : '037.341.092-13',
-    'novaSenha' : '123456'
+    'email': 'ifpa@gmail.com',
+    'cpf': '037.341.092-13',
+    'novaSenha': '123456'
   }
 ];
 void listAddCadastroVoid(String nome, String sobrenome, String dataNascimento,

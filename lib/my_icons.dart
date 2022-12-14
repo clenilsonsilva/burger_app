@@ -29,4 +29,5 @@ class MyIcons {
   static const IconData hamburger = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData beer = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData hotdog = IconData(0xf80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData coffeecup = IconData(0xe848, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -7,10 +7,10 @@ Map marmitacarneassada() {
   'rating': 4.7,
   'images': 'images/carneassadamarmita.png',
   'row': 1,
-  'width': 170.0,
-  'height': 160.0,
-  'left': 20.0,
-  'top': 35.0,};
+  'width': 180.0,
+  'height': 180.0,
+  'left': -35.0,
+  'top': 30.0,};
 }
 
 Map marmitafrango() {
@@ -21,10 +21,10 @@ Map marmitafrango() {
   'rating': 4.8,
   'images': 'images/frangomarmita.png',
   'row': 1,
-  'width': 170.0,
-  'height': 140.0,
-  'left': 20.0,
-  'top': 45.0,};
+  'width': 100.0,
+  'height': 100.0,
+  'left': -10.0,
+  'top': 60.0,};
 }
 
 Map marmitabisteca() {
@@ -37,7 +37,8 @@ Map marmitabisteca() {
   'row': 1,
   'width': 170.0,
   'height': 140.0,
-  'left': 20.0,
+  'left': 0.0,
+  'right': 10.0,
   'top': 45.0,};
 }
 
@@ -51,6 +52,6 @@ Map marmitalasanha() {
   'row': 1,
   'width': 170.0,
   'height': 140.0,
-  'left': 20.0,
+  'left': -20.0,
   'top': 45.0,};
 }

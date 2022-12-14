@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cep/class/notifier.dart';
+
+import '../class/listcard.dart';
 
 class Addcard extends StatelessWidget {
   //drawer informacoes do usuario
-  final nomeCartao = TextEditingController();
-  final validade = TextEditingController();
+  final activar = Activator(listc: [nomeCartao, validade, numeroCartao, cvv, cpfCartao]);
   Addcard({super.key});
 
   @override
@@ -100,7 +102,7 @@ class Addcard extends StatelessWidget {
                       ),
                     ),
                     cursorColor: Colors.teal,
-                    controller: nomeCartao,
+                    controller: numeroCartao,
                     keyboardType: TextInputType.number,
                     style: const TextStyle(fontSize: 18),
                   ),
@@ -118,7 +120,7 @@ class Addcard extends StatelessWidget {
                       hintStyle: TextStyle(fontSize: 18, height: 0.2),
                     ),
                     cursorColor: Colors.teal,
-                    controller: validade,
+                    controller: cvv,
                     keyboardType: TextInputType.number,
                     style: const TextStyle(fontSize: 18),
                   ),
@@ -141,31 +143,39 @@ class Addcard extends StatelessWidget {
                   hintStyle: TextStyle(fontSize: 18, height: 0.2),
                 ),
                 cursorColor: Colors.teal,
-                controller: validade,
+                controller: cpfCartao,
                 keyboardType: TextInputType.number,
                 style: const TextStyle(fontSize: 18),
               ),
             ),
           ),
-          GestureDetector(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 80),
-              child: Container(
-                height: 50,
-                width: size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color.fromARGB(255, 124, 124, 124),
-                ),
-                child: const Center(
-                  child: Text(
-                    'ADD CARTAO',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+          ValueListenableBuilder(
+            valueListenable: activar,
+            builder: (context, value, child) {
+              return GestureDetector(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 30, horizontal: 80),
+                  child: Container(
+                    height: 50,
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: value == false
+                          ? const Color.fromARGB(255, 124, 124, 124)
+                          : Colors.teal,
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'ADD CARTAO',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            // onTap: () {},
+                // onTap: () {},
+              );
+            },
           ),
         ],
       ),

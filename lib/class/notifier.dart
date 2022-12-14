@@ -24,7 +24,7 @@ class Activator extends ValueNotifier<bool> {
         break;
       }
     }
-    value = res.value && a.value;
+    list.isNotEmpty ? value = res.value && a.value : value = a.value;
   }
 
   void _checkc() {
@@ -35,6 +35,6 @@ class Activator extends ValueNotifier<bool> {
         break;
       }
     }
-    value = res.value && a.value;
+    list.isNotEmpty ? value = res.value && a.value : value = a.value;
   }
 }
