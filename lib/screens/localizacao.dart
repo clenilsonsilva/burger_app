@@ -108,8 +108,8 @@ class Localizacao extends StatelessWidget {
                               }
                             }
                             if (!resposta.value.contains(
-                                    'Nada encontrado, tente outro Cep') &&
-                                resposta.value.isNotEmpty) {
+                                    'Nada encontrado, tente outro Cep') ||
+                                resposta.value.isNotEmpty || !resposta.value.contains('Erro!')) {
                               // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,

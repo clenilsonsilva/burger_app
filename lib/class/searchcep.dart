@@ -39,7 +39,7 @@ Future consultar(String cep) async {
   }
   if (validarCep(cep)) {
     try {
-      final res = await get(Uri.http('6d8a-143-208-139-228.sa.ngrok.io', '/ws/$cep'));
+      final res = await get(Uri.http('b072-143-208-137-57.sa.ngrok.io', '/ws/$cep'));
       if (res.body == '[]') {
         return 'Nada encontrado, tente outro Cep';
       } else {
