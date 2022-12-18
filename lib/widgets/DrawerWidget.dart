@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/class/listcard.dart';
-import 'package:flutter_cep/screens/drawerpage/myaccount.dart';
-import 'package:flutter_cep/screens/login_page.dart';
+import 'package:flutter_cep/drawerpage/my_account/my_infos.dart';
+import 'package:flutter_cep/drawerpage/entrar_cadastrar/login_page.dart';
 
 class DrawerWidget extends StatelessWidget {
   //lista dos drawers

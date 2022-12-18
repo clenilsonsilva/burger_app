@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../class/listcard.dart';
 import '../../widgets/Cpe.dart';
-import '../../widgets/enderecos.dart';
-import '../../widgets/pagamentos.dart';
+import 'enderecos.dart';
+import 'pagamentos.dart';
 
 class MyAccount extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -35,7 +35,6 @@ class MyAccount extends StatelessWidget {
         backgroundColor: Colors.teal,
         centerTitle: false,
       ),
-      // extendBodyBehindAppBar: true,
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
@@ -43,11 +42,11 @@ class MyAccount extends StatelessWidget {
             children: [
               Cadastro(height: size.height, width: size.width),
               ValueListenableBuilder(
+                //tabcadastro escuta as mudancas de tab e se estiver selecionado a opcao cadastro ele mostra as infos abaixo
                 valueListenable: tabcadastro,
                 builder: (context, value, child) {
                   if (tabcadastro.value == 0) {
                     return SingleChildScrollView(
-                        // reverse: true,
                         child: SingleChildScrollView(
                           child: Stack(
                             children: [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../class/listcard.dart';
+import '../../class/listcard.dart';
 
 class Cadastrese extends StatelessWidget {
   final formKey = GlobalKey<FormState>();

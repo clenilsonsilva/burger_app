@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/header/header.dart';
-import '../body/body_desc.dart';
+import 'body_desc.dart';
 import '../widgets/burgerbottonnavbar.dart';
 
 class BurgerPage extends StatelessWidget {

@@ -2,18 +2,18 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cep/class/searchcep.dart';
-import 'package:flutter_cep/screens/ondevoceta.dart';
+import 'package:flutter_cep/drawerpage/my_account/ondevoceta.dart';
 
 class Localizacao extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   final endereco = TextEditingController();
   final resposta = ValueNotifier<String>('');
   final cep = ValueNotifier<bool>(false);
-  List lista = [];
   Localizacao({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // List lista = [];
     endereco.addListener(() {
       endereco.value.text.length == 10 ? cep.value = true : cep.value = false;
     });

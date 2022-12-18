@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/localizacao.dart';
+import 'package:flutter_cep/drawerpage/my_account/localizacao.dart';
 
 class Enderecos extends StatelessWidget {
   const Enderecos({super.key});

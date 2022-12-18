@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../class/items.dart';
 import '../class/listcard.dart';
 import '../header/header.dart';
-import '../body/categories.dart';
-import '../body/hamburguer_list.dart';
+import 'categories.dart';
+import 'hamburguer_list.dart';
 import '../widgets/DrawerWidget.dart';
-import 'shippin_page.dart';
+import '../cart_page/shippin_page.dart';
 
 class HomePage extends StatelessWidget {
   //Pagina inicial

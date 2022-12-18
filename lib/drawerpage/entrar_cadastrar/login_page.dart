@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cep/class/listcard.dart';
-import 'package:flutter_cep/screens/cadastre_se.dart';
+import 'package:flutter_cep/drawerpage/entrar_cadastrar/cadastre_se.dart';
 import 'package:get/utils.dart';
 
 class Login extends StatelessWidget {

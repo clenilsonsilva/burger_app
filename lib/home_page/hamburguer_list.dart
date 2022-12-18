@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cep/screens/burger_page.dart';
+import 'package:flutter_cep/view_page/view_page.dart';
 
 class HamburgueList extends StatelessWidget {
   //map0 e map1 sao as informacoes do produto da esquerda e direita
